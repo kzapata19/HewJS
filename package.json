@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "babel client/components --out-dir client/compiled/components --presets=es2015,react --ignore=node_modules,compiled --source-maps inline --watch",
-    "postinstall": "bower install"
+    "postinstall": "bower install & npm start"
   },
   "repository": {
     "type": "git",
