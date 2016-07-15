@@ -2,5 +2,9 @@
 
 node_modules/
 
+<<<<<<< ddc26932940f5d68b4e77f55300a4a61580c9864
 .floo
 .flooignore
+=======
+.floo*
+>>>>>>> feat - add dependencies in package.json, add .floo* in .gitIgnore
