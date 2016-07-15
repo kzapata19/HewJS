@@ -2,6 +2,10 @@
   "name": "hewjs",
   "version": "0.0.0",
   "description": "Data visualization and you",
+  "engines": {
+    "node": "6.2.2",
+    "npm": "3.9.5"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
