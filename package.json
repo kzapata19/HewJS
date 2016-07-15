@@ -18,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/bulbasaur-HRR17/bulbasaur-HRR17/issues"
   },
-  "homepage": "https://github.com/bulbasaur-HRR17/bulbasaur-HRR17#readme"
+  "homepage": "https://github.com/bulbasaur-HRR17/bulbasaur-HRR17#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-partials": "^0.3.0",
+    "serve-static": "^1.11.1"
+  }
 }
