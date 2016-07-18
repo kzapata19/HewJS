@@ -3,10 +3,10 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    watch: {
+     watch: {
       browserify: {
         files: ['client/components/*.jsx'],
-        tasks: ['browserify']
+        tasks: ['browserify', 'uglify']
       }
     },
 
@@ -15,10 +15,23 @@ module.exports = function(grunt) {
         options: {
            transform: [['babelify', {presets: ['es2015', 'react']}]]
         },
-        src: ['client/components/app.jsx'],
+        src: ['client/components/*.jsx'],
         dest: 'client/compiled/components/app.js',
       }
     },
+
+    uglify: {
+      options: {
+        // the banner is inserted at the top of the output
+        banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+      },
+      dist: {
+        files: {
+          'client/compiled/components/app.min.js': 'client/compiled/components/app.js'
+        }
+       }
+    },
+
     shell: {
       command: 'git pull --rebase upstream master'
     }
@@ -27,13 +40,15 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-browserify');
-
-  grunt.registerTask('default', ['browserify']);
-
-
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.registerTask('rebase', function() {
     grunt.task.run(['shell']);
-  })
+  });
+
+  grunt.registerTask('compile', function() {
+    grunt.task.run(['browserify']);
+    grunt.task.run(['uglify']);
+  });
 
 };
