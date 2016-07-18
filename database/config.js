@@ -1,8 +1,8 @@
-var mongoose = require('mongoose');
+let mongoose = require('mongoose');
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/hewJSdb');
 
-var db = mongoose.connection;
+let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
  console.log('Mongodb connection open');

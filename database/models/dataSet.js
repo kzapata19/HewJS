@@ -1,13 +1,14 @@
 //The datasets collection will tentatively consist of documents with time stamps:
 //chart: object
 //username: string
-var mongoose = require('mongoose');
+let mongoose = require('mongoose');
 
-var dataSetSchema = mongoose.Schema({
+let dataSetSchema = mongoose.Schema({
   chart: Object,
+  chartName: String,
   username: String
 });
 
-var DataSet = mongoose.model('DataSet', dataSetSchema);
+let DataSet = mongoose.model('DataSet', dataSetSchema);
 
 module.exports = DataSet;
