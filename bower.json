@@ -19,6 +19,7 @@
     "tests"
   ],
   "dependencies": {
-    "react": "^15.2.1"
+    "react": "^15.2.1",
+    "particles.js": "^2.0.0"
   }
 }
