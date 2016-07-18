@@ -42,13 +42,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  grunt.registerTask('rebase', function() {
-    grunt.task.run(['shell']);
-  });
+  grunt.registerTask('default', ['watch']);
 
-  grunt.registerTask('compile', function() {
-    grunt.task.run(['browserify']);
-    grunt.task.run(['uglify']);
-  });
+  grunt.registerTask('rebase', ['shell']);
+
+  grunt.registerTask('build', [
+    'browserify', 'uglify'
+  ]);
 
 };
