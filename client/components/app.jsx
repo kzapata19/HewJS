@@ -10,11 +10,6 @@ class App extends React.Component {
     };
   }
 
-  handleInput(files) {
-    console.log('DROPPED');
-    console.log(files);
-  }
-
   render() {
     return (
       <div>
@@ -22,7 +17,7 @@ class App extends React.Component {
           <h1>{this.state.message}</h1>
         </div>
         <div>
-          <Input input={this.state.input} handler={this.handleInput} />
+          <Input input={this.state.input} context={this} />
         </div>
       </div>
     );
