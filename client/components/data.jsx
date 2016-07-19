@@ -1,12 +1,22 @@
 const React = require('react');
+const dragula = require('react-dragula');
 
-const Data = (props) => {
+class Data extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log(props);
+    this.props = props;
+    this.state = {
+    };
+  }
 
-  return (
-    <div>
-      <p>{props.rawData}</p>
-    </div>
-  );
+  render() {
+    return (
+      <div>
+        <p>{this.props.rawData}</p>
+      </div>
+    );
+  }
 }
 
 module.exports = Data;
