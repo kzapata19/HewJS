@@ -103,7 +103,7 @@ canvas{
 }
 
 .row {
-  width: 100%;
+  width: 75%;
   max-width: 100%;
   min-width: 768px;
   margin: 0 auto;
@@ -124,10 +124,25 @@ canvas{
   border-radius: 50%;
 }
 
+.profile-name {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.profile-name a {
+  text-decoration: none;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
 .footer {
   height: 150px;
   background-color: #222;
 }
+
 .footer-info {
   margin-top: 40px;
   font-size: 40px;
