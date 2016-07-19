@@ -1,10 +1,98 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <title>"Hello HewJS! Hear me roar!"</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="assets/style.css">
 </head>
 <body>
+  <div id="particles-js"></div>
   <div class="app"></div>
-  <script src="compiled/components/app.js"></script>
+  <script src="lib/particles.js/particles.min.js"></script>
+  <script src="assets/style.js"></script>
+  <script src="compiled/components/app.min.js"></script>
+</body>
+</html>
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>"Hello HewJS! Hear me roar!"</title>
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Bungee+Outline' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" media="screen" href="assets/style.css">
+</head>
+<body>
+
+<div class="app"></div>
+
+<div id="particles-js" class="jumbotron">
+  <div class="container">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#">HewJS</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="">Home</a></li>
+          <li><a href="#team-section" class="team ">Team</a></li>
+          <li><a href="">Github</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="hew text-center">
+      HewJS
+    </div>
+  </div>
+</div>
+<div class="row" id="team-section">
+  <div class="col-md-12 text-center team-header">TEAM</div>
+  <div class="team-container text-center">
+    <div class="member col-md-3">
+      <img class="profile" src="https://avatars1.githubusercontent.com/u/15959217?v=3&s=460">
+      <h4 class="profile-name"><a href="https://github.com/jtlong3rd">Jamie Long</a></h4>
+      <h3 class="title">Product Owner & Lead Engineer</h3>
+    </div>
+    <div class="member col-md-3">
+      <img class="profile" src="https://avatars3.githubusercontent.com/u/10336681?v=3&s=400">
+      <h4 class="profile-name"><a href="https://github.com/kzapata19">Karen Zapata</a></h4>
+      <h3 class="title">SCRUM Master & Lead Engineer</h3>
+    </div>
+    <div class="member col-md-3">
+      <img class="profile" src="https://avatars2.githubusercontent.com/u/18367600?v=3&s=400">
+      <h4 class="profile-name"><a href="https://github.com/peranatd">Peranat Dayananda</a></h4>
+      <h3 class="title">Lead Engineer</h3>
+    </div>
+    <div class="member col-md-3">
+      <img class="profile" src="https://avatars0.githubusercontent.com/u/13622298?v=3&s=460">
+      <h4 class="profile-name"><a href="https://github.com/Ronolibert">Ron Cruz</a></h4>
+      <h3 class="title">Lead Engineer</h3>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <div class="row">
+    <div class="col-md-6 text-center">
+      <div class="footer-info">
+        HewJS
+      </div>
+    </div>
+    <div class="col-md-6 text-center">
+      <div class="footer-links">
+        <div>Contact Us:</div>
+        <div>realhewjs@gmail.com</div>
+      </div>
+  </div>
+</div>
+
+
+<!-- scripts -->
+<script src="compiled/components/app.js"></script>
+<script src="lib/jquery/dist/jquery.min.js"></script>
+<script src="lib/particles.js/particles.min.js"></script>
+<script src="assets/style.js"></script>
+
 </body>
 </html>
