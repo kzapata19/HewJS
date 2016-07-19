@@ -1,5 +1,6 @@
 const Chart = require('./chart.jsx');
 const Input = require('./input.jsx');
+const Data = require('./data.jsx');
 const React = require('react');
 const ReactDOM = require('react-dom');
 
@@ -15,6 +16,25 @@ class App extends React.Component {
     };
   }
 
+  /*
+    formats data into the required format:
+    [[set1, ... data points ...],
+     [set2, ... data points ...],
+     ...
+    ]
+  */
+  transpose(matrix) {
+    let result = [];
+    for (let i = 0; i < matrix[0].length; i++) {
+      let row = [];
+      for (let j = 0; j < matrix.length; j++) {
+        row.push(matrix[j][i])
+      }
+      result.push(row);
+    }
+    return result;
+  }
+
   render() {
     return (
       <div>
@@ -25,6 +45,7 @@ class App extends React.Component {
           <Input input={this.state.input} context={this} />
           <Chart context={this} />
         </div>
+        <Data rawData={this.state.input} />
       </div>
     );
   }

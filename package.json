@@ -44,6 +44,7 @@
     "nodemon": "^1.9.2",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
+    "react-dragula": "^1.1.16",
     "react-dropzone": "^3.5.3",
     "serve-static": "^1.11.1",
     "underscore": "^1.8.3"
