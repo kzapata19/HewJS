@@ -1,5 +1,5 @@
 const React = require('react');
-const dragula = require('react-dragula');
+const Dragula = require('react-dragula');
 
 class Data extends React.Component {
   constructor(props) {
@@ -10,10 +10,23 @@ class Data extends React.Component {
     };
   }
 
+  dragulaDecorator(componentBackingInstance) {
+    if (componentBackingInstance) {
+      let options = { };
+      Dragula([componentBackingInstance], options);
+    }
+  };
+
   render() {
     return (
-      <div>
-        <p>{this.props.rawData}</p>
+      <div ref={this.dragulaDecorator} style={{color: 'blue'}}>
+        <div>Swap me around</div>
+        <div>Swap her around</div>
+        <div>Swap him around</div>
+        <div>Swap them around</div>
+        <div>Swap us around</div>
+        <div>Swap things around</div>
+        <div>Swap everything around</div>
       </div>
     );
   }
