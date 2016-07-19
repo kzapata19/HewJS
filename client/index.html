@@ -22,28 +22,70 @@
   <title>"Hello HewJS! Hear me roar!"</title>
   <script src="lib/react/react.js"></script>
   <script src="lib/react/react-dom.js"></script>
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.min.css">
+  <script src="lib/jquery/dist/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Bungee+Outline' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" media="screen" href="assets/style.css">
 </head>
 <body>
 
 <div class="app"></div>
-<div class="layout">
-  <header class="jumbotron header">
-    <div id="particles-js"></div>
-    <div class="container">
-      <div class="navbar">
-        <div class="navbar-logo">
-          <h1 class="logo">
-            <a href="hewjs.herokuapp.com"></a>
-          </h1>
-        </div>
-        <div class="navbar-menu">
 
-        </div>
+<div id="particles-js" class="jumbotron">
+  <div class="container">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#">HewJS</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="">Home</a></li>
+          <li><a href="#team-section" class="team ">Team</a></li>
+          <li><a href="">Github</a></li>
+        </ul>
       </div>
     </div>
-  </header>
+    <div class="hew text-center">
+      HewJS
+    </div>
+  </div>
 </div>
+<div class="row" id="team-section">
+  <div class="col-md-12 text-center team-header">TEAM</div>
+  <div class="team-container text-center">
+    <div class="member col-md-3">
+      <img class="profile" src="https://avatars1.githubusercontent.com/u/15959217?v=3&s=460">
+      <h4 class="profile-name">Jamie Long</h4>
+    </div>
+    <div class="member col-md-3">
+      <img class="profile" src="https://avatars3.githubusercontent.com/u/10336681?v=3&s=400">
+      <h4 class="profile-name">Karen Zapata</h4>
+    </div>
+    <div class="member col-md-3">
+      <img class="profile" src="https://avatars2.githubusercontent.com/u/18367600?v=3&s=400">
+      <h4>Peranat Dayananda</h4>
+    </div class="profile-name">
+    <div class="member col-md-3">
+      <img class="profile" src="https://avatars0.githubusercontent.com/u/13622298?v=3&s=460">
+      <h4 class="profile-name">Ron Cruz</h4>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <div class="row">
+    <div class="col-md-6 text-center">
+      <div class="footer-info">
+        HewJS
+      </div>
+    </div>
+    <div class="col-md-6 text-center">
+      <div class="footer-links">
+        <div>Contact Us:</div>
+        <div>realhewjs@gmail.com</div>
+      </div>
+  </div>
+</div>
+
 
 <!-- scripts -->
 <script src="lib/particles.js/particles.min.js"></script>

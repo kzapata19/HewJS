@@ -110,3 +110,12 @@ particlesJS('particles-js', {
   }
 
 );
+
+var $root = $('html, body');
+
+$('.team').click(function() {
+    $root.animate({
+        scrollTop: $( $.attr(this, 'href') ).offset().top
+    }, 1000);
+    return false;
+});
