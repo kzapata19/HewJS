@@ -1,3 +1,4 @@
+const Chart = require('./chart.jsx');
 const Input = require('./input.jsx');
 const React = require('react');
 const ReactDOM = require('react-dom');
@@ -22,6 +23,7 @@ class App extends React.Component {
         </div>
         <div>
           <Input input={this.state.input} context={this} />
+          <Chart context={this} />
         </div>
       </div>
     );
