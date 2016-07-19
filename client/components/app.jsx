@@ -1,5 +1,6 @@
 const Chart = require('./chart.jsx');
 const Input = require('./input.jsx');
+const Data = require('./data.jsx');
 const React = require('react');
 const ReactDOM = require('react-dom');
 
