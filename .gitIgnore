@@ -5,6 +5,3 @@ client/compiled
 client/lib
 
 .floo*
-
-client/components/chart.jsx
-client/components/dimplicious.html
