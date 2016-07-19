@@ -26,6 +26,7 @@ class App extends React.Component {
           <Input input={this.state.input} context={this} />
           <Chart context={this} />
         </div>
+        <Data rawData={this.state.input} />
       </div>
     );
   }

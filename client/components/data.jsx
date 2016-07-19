@@ -1,17 +1,12 @@
 const React = require('react');
 
-class Data extends React.Component {
-  constructor(props) {
-    super(props);
+const Data = (props) => {
 
-    this.state = {
-    };
-  }
-
-  render() {
-    return (
-      <div>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <p>{props.rawData}</p>
+    </div>
+  );
 }
+
+module.exports = Data;
