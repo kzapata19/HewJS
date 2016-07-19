@@ -1,4 +1,8 @@
 const Input = require('./input.jsx');
+const React = require('react');
+const ReactDOM = require('react-dom');
+
+window.React = React;
 
 class App extends React.Component {
   constructor(props) {
@@ -23,7 +27,5 @@ class App extends React.Component {
     );
   }
 }
-
-window.App = App;
 
 ReactDOM.render(<App />, document.getElementsByClassName('app')[0]);
