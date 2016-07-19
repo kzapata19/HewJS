@@ -52,3 +52,13 @@ canvas{
   position: relative;
   color: #ffffff;
 }
+
+.logo a{
+  width: auto;
+  height: auto;
+  max-height: 300px;
+  max-width: 300px;
+  text-indent: -9999em;
+  background-image: url('hew.png');
+  color: white;
+}
