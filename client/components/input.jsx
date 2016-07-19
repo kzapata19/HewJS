@@ -11,7 +11,12 @@ const Input = (props) => {
     read.onload = function(event) {
       $('#textArea').val(event.target.result);
       context.setState({
-        input: event.target.result.split('\n').map(line => line.split(','))
+        input: event.target.result
+        .split('\n')
+        .map(line => line
+          .split(',')
+          .map(element => element.trim())
+        )
       });
     }
     read.readAsText(file);
@@ -20,7 +25,7 @@ const Input = (props) => {
   const handleText = () => {
     let input = $('#textArea').val();
     if (input) {
-      input = input.split('\n').map(line => line.split(','));
+      input = input.split('\n').map(line => line.split(',').map(element => element.trim()));
       props.context.setState({
         input: input
       });
