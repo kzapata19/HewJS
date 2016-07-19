@@ -5,3 +5,5 @@ const Chart = (props) => {
     </div>
   );
 };
+
+module.exports = Chart;
