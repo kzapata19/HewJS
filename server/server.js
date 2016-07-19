@@ -72,19 +72,51 @@ app.post('/api/datasets', function(req, res) {
 });
 
 app.put('/api/users/:username', function(req, res) {
-  res.status(200).send();
+  helpers.updateUser(
+    req.params.username,
+    { username: req.body.username, password: req.body.password },
+    function(err, user) {
+      if (err) {
+        res.status(404).send(err);
+      } else {
+        res.status(200).send(user);
+      }
+    }
+  );
 });
 
 app.put('/api/datasets/:chartName', function(req, res) {
-  res.status(200).send();
+  helpers.updateDataSet(
+    req.params.chartName,
+    { chart: req.body.char, chartName: req.body.chartName, username: req.body.username },
+    function(err, dataSet) {
+      if (err) {
+        res.status(404).send(err);
+      } else {
+        res.status(200).send(dataSet);
+      }
+    }
+  );
 });
 
 app.delete('/api/users/:username', function(req, res) {
-  res.status(200).send();
+  helpers.deleteUser(req.params.username, function(err, user) {
+    if (err) {
+      res.status(404).send(err);
+    } else {
+      res.status(200).send(user);
+    }
+  });
 });
 
 app.delete('/api/datasets/:chartName', function(req, res) {
-  res.status(200).send();
+  helpers.deleteChart(req.params.chartName, function(err, dataSet) {
+    if (err) {
+      res.status(404).send(err);
+    } else {
+      res.status(200).send(dataSet);
+    }
+  });
 });
 
 module.exports = app;
