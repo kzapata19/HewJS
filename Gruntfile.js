@@ -20,6 +20,13 @@ module.exports = function(grunt) {
       }
     },
 
+    cssmin: {
+      minify:{
+        src: 'client/assets/style.css',
+        dest: './client/assets/style.min.css'
+      }
+    },
+
     uglify: {
       options: {
         // the banner is inserted at the top of the output
@@ -40,6 +47,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.registerTask('default', ['watch']);
@@ -47,7 +55,7 @@ module.exports = function(grunt) {
   grunt.registerTask('rebase', ['shell']);
 
   grunt.registerTask('build', [
-    'browserify', 'uglify'
+    'browserify', 'uglify', 'cssmin'
   ]);
 
 };
