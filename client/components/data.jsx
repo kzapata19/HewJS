@@ -29,18 +29,16 @@ class Data extends React.Component {
   render() {
     return (
       <div>
-        <select onChange={this.setAxes.bind(this)} data-axis='x'>
-          {
-            Object.keys(this.props.rawData).map(key =>
-            <option value={key}>{key}</option>)
-          }
-        </select>
-        <select onChange={this.setAxes.bind(this)} data-axis='y'>
-          {
-            Object.keys(this.props.rawData).map(key =>
-            <option value={key}>{key}</option>)
-          }
-        </select>
+      {
+        Object.keys(this.state).map(axis =>
+          <select onChange={this.setAxes.bind(this)} data-axis={axis}>
+            {
+              Object.keys(this.props.rawData).map(key =>
+              <option value={key}>{key}</option>)
+            }
+          </select>
+          )
+      }
         <button onClick={this.showIt.bind(this)}>Show it</button>
       </div>
     );
