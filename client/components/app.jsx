@@ -12,7 +12,7 @@ class App extends React.Component {
 
     this.state = {
       message: 'HewJS in React',
-      input: 'this is the data from the input field'
+      input: ''
     };
   }
 
@@ -35,6 +35,27 @@ class App extends React.Component {
     return result;
   }
 
+
+  /*
+    {
+      name: [values...],
+      name: [values...]…
+    }
+  */
+  formatter(matrix) {
+    let result = {};
+    for (let i = 0; i < matrix.length; i++){
+      for (let j = 0; j < matrix[i].length; j++){
+        if (!j){
+          result[matrix[i][j]] = [];
+        }else{
+          result[matrix[i][0]].push(matrix[i][j]);
+        }
+      }
+    }
+    return result;
+  }
+
   render() {
     return (
       <div>
@@ -45,10 +66,11 @@ class App extends React.Component {
           <Input input={this.state.input} context={this} />
           <Chart context={this} />
         </div>
-        <Data rawData={this.state.input} />
+        <Data rawData={this.formatter(this.state.input)} />
       </div>
     );
   }
 }
 
 ReactDOM.render(<App />, document.getElementsByClassName('app')[0]);
+

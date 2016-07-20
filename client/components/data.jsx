@@ -4,32 +4,48 @@ const Dragula = require('react-dragula');
 class Data extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.props = props;
+    console.log(this.props.rawData);
     this.state = {
+      x: [],
+      y: []
     };
   }
 
-  dragulaDecorator(componentBackingInstance) {
-    if (componentBackingInstance) {
-      let options = { };
-      Dragula([componentBackingInstance], options);
+  setAxes(e) {
+    console.log('this is e', e);
+    console.log('This is e target value', e.target.value)
+    if (e.target.value !== "default") {
+      let axis = {};
+      axis[e.target.dataset.axis] = this.props.rawData[e.target.value];
+      this.setState(axis);
     }
-  };
+  }
+
+  showIt() {
+    console.log(this.state);
+  }
 
   render() {
     return (
-      <div ref={this.dragulaDecorator} style={{color: 'blue'}}>
-        <div>Swap me around</div>
-        <div>Swap her around</div>
-        <div>Swap him around</div>
-        <div>Swap them around</div>
-        <div>Swap us around</div>
-        <div>Swap things around</div>
-        <div>Swap everything around</div>
+      <div>
+      {
+        Object.keys(this.state).map(axis =>
+          <select onChange={this.setAxes.bind(this)} data-axis={axis}>
+            {
+              Object.keys(this.props.rawData).map(key =>
+              <option value={key}>{key}</option>)
+            }
+          </select>
+          )
+      }
+        <button onClick={this.showIt.bind(this)}>Show it</button>
       </div>
     );
   }
 }
 
 module.exports = Data;
+
+
+// {day: [mon, tues, wed, thur, fri, sat, sun], hours: [1,2,3,4,5,6,7] }
