@@ -1,3 +1,4 @@
+const Choose = require('./choose.jsx')
 const Chart = require('./chart.jsx');
 const Input = require('./input.jsx');
 const Data = require('./data.jsx');
@@ -66,6 +67,7 @@ class App extends React.Component {
           <Input input={this.state.input} context={this} />
           <Chart context={this} />
         </div>
+        <Choose />
         <Data rawData={this.formatter(this.state.input)} />
       </div>
     );
