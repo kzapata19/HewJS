@@ -4,32 +4,28 @@ const Dragula = require('react-dragula');
 class Data extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.props = props;
+    console.log(this.props.rawData);
     this.state = {
+
     };
   }
 
-  dragulaDecorator(componentBackingInstance) {
-    if (componentBackingInstance) {
-      let options = { };
-      Dragula([componentBackingInstance], options);
-    }
-  };
-
   render() {
     return (
-      <div ref={this.dragulaDecorator} style={{color: 'blue'}}>
-        <div>Swap me around</div>
-        <div>Swap her around</div>
-        <div>Swap him around</div>
-        <div>Swap them around</div>
-        <div>Swap us around</div>
-        <div>Swap things around</div>
-        <div>Swap everything around</div>
+      <div>
+        <select>
+          {
+            Object.keys(this.props.rawData).map(key =>
+            <option value={key}>{key}</option>)
+          }
+        </select>
       </div>
     );
   }
 }
 
 module.exports = Data;
+
+
+// {day: [mon, tues, wed, thur, fri, sat, sun], hours: [1,2,3,4,5,6,7] }
