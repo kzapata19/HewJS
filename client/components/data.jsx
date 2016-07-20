@@ -7,19 +7,41 @@ class Data extends React.Component {
     this.props = props;
     console.log(this.props.rawData);
     this.state = {
-
+      x: [],
+      y: []
     };
+  }
+
+  setAxes(e) {
+    console.log('this is e', e);
+    console.log('This is e target value', e.target.value)
+    if (e.target.value !== "default") {
+      let axis = {};
+      axis[e.target.dataset.axis] = this.props.rawData[e.target.value];
+      this.setState(axis);
+    }
+  }
+
+  showIt() {
+    console.log(this.state);
   }
 
   render() {
     return (
       <div>
-        <select>
+        <select onChange={this.setAxes.bind(this)} data-axis='x'>
           {
             Object.keys(this.props.rawData).map(key =>
             <option value={key}>{key}</option>)
           }
         </select>
+        <select onChange={this.setAxes.bind(this)} data-axis='y'>
+          {
+            Object.keys(this.props.rawData).map(key =>
+            <option value={key}>{key}</option>)
+          }
+        </select>
+        <button onClick={this.showIt.bind(this)}>Show it</button>
       </div>
     );
   }

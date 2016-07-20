@@ -12,7 +12,7 @@ class App extends React.Component {
 
     this.state = {
       message: 'HewJS in React',
-      input: '1'
+      input: ''
     };
   }
 
