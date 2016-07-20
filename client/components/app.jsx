@@ -65,10 +65,8 @@ class App extends React.Component {
         </div>
         <div>
           <Input input={this.state.input} context={this} />
-          <Chart context={this} />
         </div>
-        <Choose />
-        <Data rawData={this.formatter(this.state.input)} />
+        <Choose rawData={this.formatter(this.state.input)} />
       </div>
     );
   }

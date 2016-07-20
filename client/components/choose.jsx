@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import Data from './data.jsx';
 
 class Choose extends React.Component {
   constructor(props) {
@@ -10,25 +11,27 @@ class Choose extends React.Component {
   }
 
   onChoice(event) {
-    console.log('This is event target', event.target);
-    console.log('This is event target dataset value', event.target.dataset.value);
+    this.setState({
+      choice: event.target.dataset.value
+    });
   }
 
   render() {
     return (
       <div>
-        <div data-value="bar" onClick={this.onChoice} >
+        <div data-value="bar" onClick={this.onChoice.bind(this)} >
           Bar
         </div>
-        <div data-value="histogram" onClick={this.onChoice} >
+        <div data-value="histogram" onClick={this.onChoice.bind(this)} >
           Histogram
         </div>
-        <div data-value="line" onClick={this.onChoice} >
+        <div data-value="line" onClick={this.onChoice.bind(this)} >
           Line
         </div>
-        <div data-value="scatter" onClick={this.onChoice} >
+        <div data-value="scatter" onClick={this.onChoice.bind(this)} >
           Scatter
         </div>
+        <Data rawData={this.props.rawData} choice={this.state.choice}/>
       </div>
     )
   }

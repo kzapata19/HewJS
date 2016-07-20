@@ -1,10 +1,10 @@
 const React = require('react');
 const Dragula = require('react-dragula');
+import Chart from './chart.jsx';
 
 class Data extends React.Component {
   constructor(props) {
     super(props);
-    this.props = props;
     console.log(this.props.rawData);
     this.state = {
       x: [],
@@ -24,22 +24,28 @@ class Data extends React.Component {
 
   showIt() {
     console.log(this.state);
+    console.log(this.props);
   }
 
   render() {
     return (
       <div>
-      {
-        Object.keys(this.state).map(axis =>
-          <select onChange={this.setAxes.bind(this)} data-axis={axis}>
-            {
-              Object.keys(this.props.rawData).map(key =>
-              <option value={key}>{key}</option>)
-            }
-          </select>
-          )
-      }
-        <button onClick={this.showIt.bind(this)}>Show it</button>
+        <div>
+        {
+          Object.keys(this.state).map(axis =>
+            <select onChange={this.setAxes.bind(this)} data-axis={axis}>
+              {
+                Object.keys(this.props.rawData).map(key =>
+                <option value={key}>{key}</option>)
+              }
+            </select>
+            )
+        }
+          <button onClick={this.showIt.bind(this)}>Show it</button>
+        </div>
+        <div>
+          <Chart data={this.state} type={this.props.choice}/>
+        </div>
       </div>
     );
   }

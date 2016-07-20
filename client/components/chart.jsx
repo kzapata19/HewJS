@@ -1,7 +1,8 @@
 const Chart = (props) => {
   return (
     <div>
-      Hello World! I iz a chart!
+      <p>{JSON.stringify(props.data)}</p>
+      <p>{props.type}</p>
     </div>
   );
 };
