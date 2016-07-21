@@ -33,8 +33,8 @@ class Data extends React.Component {
   }
 
   formatDataForProp(input) {
-    let result = [];
-    let keys = Object.keys(input);
+    const result = [];
+    const keys = Object.keys(input);
     for (let i = 0; i < input[keys[0]].length; i++) {
       let entry = {};
       for (let key of keys) {
@@ -46,7 +46,7 @@ class Data extends React.Component {
   }
 
   formatPropForChart() {
-    let chartProp = {};
+    const chartProp = {};
     chartProp.data = this.formatDataForProp(this.props.rawData);
     chartProp.xAxis = this.state.xAxis;
     chartProp.charts = [];
