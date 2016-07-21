@@ -1,11 +1,11 @@
-let express = require('express');
-let partials = require('express-partials');
-let serveStatic = require('serve-static');
-let bodyParser = require('body-parser');
+const express = require('express');
+const partials = require('express-partials');
+const serveStatic = require('serve-static');
+const bodyParser = require('body-parser');
 
-let helpers = require('../routes/routeHelpers');
+const helpers = require('../routes/routeHelpers');
 
-let app = express();
+const app = express();
 
 app.use(partials());
 app.use(bodyParser.json());

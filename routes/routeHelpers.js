@@ -1,10 +1,7 @@
-let _ = require('underscore');
+const db = require('../database/config');
 
-let db = require('../database/config');
-
-let User = require('../database/models/user');
-let DataSet = require('../database/models/dataSet');
-
+const User = require('../database/models/user');
+const DataSet = require('../database/models/dataSet');
 
 exports.getAllUsers = function(callback) {
   User.find({}, {'_id': 0, 'username': 1, 'password': 1}, function(err, users) {
