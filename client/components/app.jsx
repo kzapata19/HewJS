@@ -13,8 +13,19 @@ class App extends React.Component {
 
     this.state = {
       message: 'HewJS in React',
-      input: ''
+      input: '',
+      choosers: ['xAxis', 'yAxis'],
+      xAxis: [],
+      yAxis: []
     };
+  }
+
+  setAxes(e) {
+    if (e.target.value !== "---choose-a-value---") {
+      let axis = {};
+      axis[e.target.dataset.axis] = e.target.value;
+      this.setState(axis);
+    }
   }
 
   /*
@@ -61,12 +72,12 @@ class App extends React.Component {
     return (
       <div>
         <div>
-          <h1>{this.state.message}</h1>
+          <h1>{JSON.stringify(this.state)}</h1>
         </div>
         <div>
           <Input input={this.state.input} context={this} />
         </div>
-        <Data rawData={this.formatter(this.state.input)} />
+        <Data rawData={this.formatter(this.state.input)} app={this.state} setAxes={this.setAxes.bind(this)} choosers={this.state.choosers}/>
       </div>
     );
   }

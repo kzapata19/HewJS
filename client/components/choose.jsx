@@ -3,27 +3,27 @@ import Data from './data.jsx';
 
 // props =
 
-const Choose = (props) => {
+// const Choose = (props) => {
 
 
 
-  return (
-    <select>
-      <option value="bar" onChange={this.setAxes.bind(this)}>
-        Bar
-      </option>
-      <option value="histogram">
-        Histogram
-      </option>
-      <option value="line">
-        Line
-      </option>
-      <option value="scatter">
-        Scatter
-      </option>
-    </select>
-  );
-}
+//   return (
+//     <select>
+//       <option value="bar" onChange={this.setAxes.bind(this)}>
+//         Bar
+//       </option>
+//       <option value="histogram">
+//         Histogram
+//       </option>
+//       <option value="line">
+//         Line
+//       </option>
+//       <option value="scatter">
+//         Scatter
+//       </option>
+//     </select>
+//   );
+// }
 
 class Choose extends React.Component {
   constructor(props) {
