@@ -27,11 +27,29 @@ class Data extends React.Component {
     };
   }
 
+  formatChartForProp() {
+    let result = [];
+
+  }
+
+  formatDataForProp(input) {
+    let result = [];
+    let keys = Object.keys(input);
+    for (let i = 0; i < input[keys[0]].length; i++) {
+      let entry = {};
+      for (let key of keys) {
+        entry[key] = input[key][i];
+      }
+      result.push(entry);
+    }
+    return result;
+  }
+
   formatPropForChart() {
     let chartProp = {};
-    console.log(this.props.rawData);
-    let data = [];
+    chartProp.data = this.formatDataForProp(this.props.rawData);
     chartProp.xAxis = this.state.xAxis;
+    chartProp.charts = [];
     return chartProp;
   }
 
