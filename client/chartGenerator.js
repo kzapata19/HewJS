@@ -1,3 +1,6 @@
+// import dimple from 'dimple-js';
+let dimple = require('../node_modules/dimple-js/dist/dimple.latest.js');
+
 let makeCharts = function(charts, height, width) {
   let svg = dimple.newSvg(".chart", height, width);
 
@@ -30,3 +33,5 @@ let typify = function(typeString) {
     return dimple.plot.scatter;
   }
 };
+
+module.exports = makeCharts;
