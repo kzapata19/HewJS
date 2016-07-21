@@ -20,7 +20,14 @@
 
 ## Usage
 
-> Some usage instructions
+> Some usage instructions:
+> This command will compile and minify your React components into a single file and it will also
+> minify the css:
+> grunt build
+> This default command will watch for any changes in the components and compile once a change is saved:
+> grunt
+> This command will call git pull --rebase upstream master:
+> grunt rebase
 
 ## Requirements
 
