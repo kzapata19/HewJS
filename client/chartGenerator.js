@@ -2,7 +2,13 @@
 import dimple from '../node_modules/dimple-js/dist/dimple.latest.js';
 import d3 from 'd3';
 
-let makeCharts = function(charts, height, width) {
+// data === {
+//   dataset: ....,
+//   x: the name of the x-axis,
+//   charts: [ {y: ...., type: .... }, {y: ...., type: .... }, .... ]
+// }
+
+let makeCharts = function(data, height, width) {
   let svg = dimple.newSvg(".chart", height, width).attr('class', 'chartSvg');
 
   // For each "chart" object,
@@ -10,12 +16,12 @@ let makeCharts = function(charts, height, width) {
     // add the category axis and measure axis...
     // add the series
     // draw
-  charts.forEach((chart) => {
-    let newChart = new dimple.chart(svg, chart.data);
+  data.charts.forEach((chart) => {
+    let newChart = new dimple.chart(svg, data.dataset);
     let newChartType = typify(chart.type);
 
-    newChart.addCategoryAxis('x', chart.xAxis);
-    newChart.addMeasureAxis('y', chart.yAxis);
+    newChart.addCategoryAxis('x', data.x);
+    newChart.addMeasureAxis('y', chart.y);
 
     newChart.addSeries(null, newChartType);
 
