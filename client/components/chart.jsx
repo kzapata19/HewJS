@@ -1,31 +1,24 @@
-import makeCharts from '../chartGenerator.js';
+import { makeCharts, deleteCharts } from '../chartGenerator.js';
 import React from 'react';
 
-  let data1 = [
-    { "Word": 35, "Awesomeness":2000 },
-    { "Word": 34, "Awesomeness":3000 }
-  ];
+let data1 = [
+  { "Word": 35, "Awesomeness":2000 },
+  { "Word": 34, "Awesomeness":3000 }
+];
 
-  // let data2 = [
-  //   { "Word":"Hello", "Awesomeness":3000 },
-  //   { "Word":"World", "Awesomeness":4000 }
-  // ];
+let chart1 = {
+  data: data1,
+  xAxis: "Word",
+  yAxis: "Awesomeness",
+  type: "bar"
+};
 
-  let chart1 = {
-    data: data1,
-    xAxis: "Word",
-    yAxis: "Awesomeness",
-    type: "bar"
-  };
-
-  // let chart2 = {
-  //   data: data2,
-  //   xAxis: "Word",
-  //   yAxis: "Awesomeness",
-  //   type: "bar"
-  // };
-
-  // makeCharts([chart1, chart2], 800, 600);
+let chart2 = {
+  data: data1,
+  xAxis: "Word",
+  yAxis: "Awesomeness",
+  type: "scatter"
+};
 
 class Chart extends React.Component {
   constructor(props) {
@@ -34,6 +27,11 @@ class Chart extends React.Component {
 
   componentDidMount() {
     makeCharts([chart1], 800, 600);
+  }
+
+  componentDidUpdate() {
+    deleteCharts();
+    makeCharts([chart2], 800, 600);
   }
 
   render() {
