@@ -21,6 +21,9 @@ let data2 = {
 class Chart extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      data: ''
+    }
   }
 
   formatter(matrix) {
@@ -37,13 +40,13 @@ class Chart extends React.Component {
     return result;
   }
 
-  formatChartForProp() {
+  formatChartForProp(nextProps) {
     let result = [];
-    let copy = this.props.app.choosers.slice(1);
+    let copy = nextProps.app.choosers.slice(1);
     for (let series of copy) {
       let temp = {};
-      temp.y = this.props.app[series];
-      temp.type = this.props.app.types[this.props.app.choosers.indexOf(series)-1]
+      temp.y = nextProps.app[series];
+      temp.type = nextProps.app.types[nextProps.app.choosers.indexOf(series)-1]
       result.push(temp);
     }
     return result;
@@ -62,29 +65,33 @@ class Chart extends React.Component {
     return result;
   }
 
-  formatPropForChart() {
+  formatPropForChart(nextProps) {
     const chartProp = {};
-    chartProp.dataset = this.formatDataForProp(this.formatter(this.props.app.input));
-    chartProp.x = this.props.app.xAxis;
-    chartProp.charts = this.formatChartForProp();
-    return chartProp;
+    chartProp.dataset = this.formatDataForProp(this.formatter(nextProps.app.input));
+    chartProp.x = nextProps.app.xAxis;
+    chartProp.charts = this.formatChartForProp(nextProps);
+    this.setState({data: chartProp});
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.formatPropForChart(nextProps);
   }
 
   componentDidMount() {
-    makeCharts(this.props.data, 800, 600);
+    makeCharts(this.state.data, 800, 600);
     // makeCharts(data1, 800, 600);
   }
 
   componentDidUpdate() {
     deleteCharts();
-    makeCharts(this.props.data, 800, 600);
+    makeCharts(this.state.data, 800, 600);
     // makeCharts(data2, 800, 600);
   }
 
   render() {
     return (
       <div>
-        <p>{JSON.stringify(this.formatPropForChart())}</p>
+        <p>{JSON.stringify(this.state.data)}</p>
         <div className="chart">
         </div>
       </div>
