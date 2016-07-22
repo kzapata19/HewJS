@@ -1,5 +1,4 @@
 import React from 'react';
-import Chart from './chart.jsx';
 
 // This component allows users to associate data with chart axes.
 // It formats and passes on data along with the chosen options to
@@ -31,7 +30,7 @@ const Data = (props) => {
               <option value={key}>{key}</option>)
             }
           </select>
-        );
+        )
       }
       </div>
     </div>

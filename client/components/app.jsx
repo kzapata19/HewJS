@@ -15,10 +15,45 @@ class App extends React.Component {
       message: 'HewJS in React',
       input: '',
       choosers: ['xAxis', 'yAxis'],
+      types: [],
       xAxis: [],
       yAxis: []
     };
   }
+
+  assignType(e) {
+    const type = e.target.value;
+    let copy = this.state.types.slice();
+    let index = this.state.choosers.indexOf(e.target.dataset.axis) - 1
+    copy[index] = type;
+    this.setState({types: copy});
+  }
+
+  //   formatChartForProp() {
+  //     let result = [];
+
+  //   }
+
+  //   formatDataForProp(input) {
+  //     const result = [];
+  //     const keys = Object.keys(input);
+  //     for (let i = 0; i < input[keys[0]].length; i++) {
+  //       let entry = {};
+  //       for (let key of keys) {
+  //         entry[key] = input[key][i];
+  //       }
+  //       result.push(entry);
+  //     }
+  //     return result;
+  //   }
+
+  //   formatPropForChart() {
+  //     const chartProp = {};
+  //     chartProp.data = this.formatDataForProp(this.props.rawData);
+  //     chartProp.xAxis = this.props.app.xAxis;
+  //     chartProp.charts = [];
+  //     return chartProp;
+  //   }
 
   setAxes(e) {
     if (e.target.value !== "---choose-a-value---") {
@@ -78,6 +113,9 @@ class App extends React.Component {
           <Input input={this.state.input} context={this} />
         </div>
         <Data rawData={this.formatter(this.state.input)} app={this.state} setAxes={this.setAxes.bind(this)} choosers={this.state.choosers}/>
+        {this.state.choosers.map(chart => chart !== 'xAxis' ?
+          <Choose chartType={chart} assignType={this.assignType.bind(this)} /> : ''
+        )}
       </div>
     );
   }
