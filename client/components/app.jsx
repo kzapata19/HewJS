@@ -88,9 +88,9 @@ class App extends React.Component {
         </div>
         <Data rawData={this.formatter(this.state.input)} setAxes={this.setAxes.bind(this)} choosers={this.state.choosers}/>
         {this.state.choosers.map(chart => chart !== 'xAxis' ?
-          <Choose chartType={chart} assignType={this.assignType.bind(this)} /> : ''
+          <Choose chartType={chart} assignType={this.assignType.bind(this)} /> : false
         )}
-        {this.state.input?<Chart app={this.state} />:''}
+        {this.state.input ? <Chart app={this.state} /> : false}
       </div>
     );
   }

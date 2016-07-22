@@ -1,7 +1,8 @@
 import React from 'react';
-import Data from './data.jsx';
 
-// props =
+// This component handles chart type selection for each data series.
+// The association is stored as an array ``types'' on the state of the App component,
+// where types[index] is associated with choosers[index+1]
 
 const Choose = (props) => {
 
@@ -24,42 +25,5 @@ const Choose = (props) => {
     </div>
   );
 }
-
-// class Choose extends React.Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {
-//       choice: ""
-//     }
-//   }
-
-//   onChoice(event) {
-//     this.setState({
-//       choice: event.target.dataset.value
-//     });
-//   }
-
-//   render() {
-//     return (
-//       <div>
-//         <div data-value="bar" onClick={this.onChoice.bind(this)} >
-//           Bar
-//         </div>
-//         <div data-value="histogram" onClick={this.onChoice.bind(this)} >
-//           Histogram
-//         </div>
-//         <div data-value="line" onClick={this.onChoice.bind(this)} >
-//           Line
-//         </div>
-//         <div data-value="scatter" onClick={this.onChoice.bind(this)} >
-//           Scatter
-//         </div>
-//         <Data rawData={this.props.rawData} choice={this.state.choice}/>
-//       </div>
-//     )
-//   }
-
-// }
 
 module.exports = Choose;
