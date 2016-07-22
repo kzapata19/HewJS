@@ -1,4 +1,4 @@
-const Dropzone = require('react-dropzone');
+import Dropzone from 'react-dropzone';
 
 const Input = (props) => {
 

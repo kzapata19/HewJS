@@ -1,9 +1,9 @@
-const Choose = require('./choose.jsx')
-const Chart = require('./chart.jsx');
-const Input = require('./input.jsx');
-const Data = require('./data.jsx');
-const React = require('react');
-const ReactDOM = require('react-dom');
+import Choose from './choose.jsx';
+import Chart from './chart.jsx';
+import Input from './input.jsx';
+import Data from './data.jsx';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 window.React = React;
 
