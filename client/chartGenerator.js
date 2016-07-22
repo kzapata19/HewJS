@@ -17,15 +17,18 @@ let makeCharts = function(data, height, width) {
     // add the series
     // draw
   data.charts.forEach((chart) => {
-    let newChart = new dimple.chart(svg, data.dataset);
-    let newChartType = typify(chart.type);
+    chart.type ? chart.type : "scatter";
+    if (chart.y) {
+      let newChart = new dimple.chart(svg, data.dataset);
+      let newChartType = typify(chart.type);
 
-    newChart.addCategoryAxis('x', data.x);
-    newChart.addMeasureAxis('y', chart.y);
+      newChart.addCategoryAxis('x', data.x);
+      newChart.addMeasureAxis('y', chart.y);
 
-    newChart.addSeries(null, newChartType);
+      newChart.addSeries(null, newChartType);
 
-    newChart.draw();
+      newChart.draw();
+    }
   });
 };
 

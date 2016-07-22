@@ -1,29 +1,26 @@
 import { makeCharts, deleteCharts } from '../chartGenerator.js';
 import React from 'react';
 
-let dataset = [
-  { "Word": 35, "Awesomeness":2000 },
-  { "Word": 34, "Awesomeness":3000 }
-];
+// let dataset = [
+//   { "Word": 35, "Awesomeness":2000 },
+//   { "Word": 34, "Awesomeness":3000 }
+// ];
 
-let data1 = {
-  dataset: dataset,
-  x: "Word",
-  charts: [{ y: "Awesomeness", type: "bar" }, { y: "Awesomeness", type: "scatter" }]
-};
+// let data1 = {
+//   dataset: dataset,
+//   x: "Word",
+//   charts: [{ y: "Awesomeness", type: "bar" }, { y: "Awesomeness", type: "scatter" }]
+// };
 
-let data2 = {
-  dataset: dataset,
-  x: "Awesomeness",
-  charts: [{ y: "Word", type: "bar" }, { y: "Word", type: "scatter" }]
-};
+// let data2 = {
+//   dataset: dataset,
+//   x: "Awesomeness",
+//   charts: [{ y: "Word", type: "bar" }, { y: "Word", type: "scatter" }]
+// };
 
 class Chart extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      data: ''
-    }
   }
 
   formatter(matrix) {
@@ -72,28 +69,29 @@ class Chart extends React.Component {
     chartProp.dataset = this.formatDataForProp(this.formatter(nextProps.app.input));
     chartProp.x = nextProps.app.xAxis;
     chartProp.charts = this.formatChartForProp(nextProps);
-    this.setState({data: chartProp});
+    return chartProp;
   }
 
   componentWillReceiveProps(nextProps) {
-    this.formatPropForChart(nextProps);
-  }
-
-  componentDidMount() {
-    makeCharts(this.state.data, 800, 600);
-    // makeCharts(data1, 800, 600);
-  }
-
-  componentDidUpdate() {
+    let data = this.formatPropForChart(nextProps);
     deleteCharts();
-    makeCharts(this.state.data, 800, 600);
-    // makeCharts(data2, 800, 600);
+    makeCharts(data, 800, 600);
   }
+
+  // componentDidMount() {
+  //   makeCharts(this.state.data, 800, 600);
+  //   // makeCharts(data1, 800, 600);
+  // }
+
+  // componentDidUpdate() {
+  //   deleteCharts();
+  //   makeCharts(this.state.data, 800, 600);
+  //   // makeCharts(data2, 800, 600);
+  // }
 
   render() {
     return (
       <div>
-        <p>{JSON.stringify(this.state.data)}</p>
         <div className="chart">
         </div>
       </div>
