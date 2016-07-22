@@ -41,11 +41,13 @@ class Chart extends React.Component {
   }
 
   formatChartForProp(nextProps) {
+    console.log("Format Chart For Props:");
     let result = [];
     let copy = nextProps.app.choosers.slice(1);
+    console.log(copy);
     for (let series of copy) {
       let temp = {};
-      temp.y = nextProps.app[series];
+      temp.y = nextProps.app.yAxis[series];
       temp.type = nextProps.app.types[nextProps.app.choosers.indexOf(series)-1]
       result.push(temp);
     }

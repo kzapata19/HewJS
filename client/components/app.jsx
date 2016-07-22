@@ -14,25 +14,42 @@ class App extends React.Component {
     this.state = {
       message: 'HewJS in React',
       input: '',
-      choosers: ['xAxis', 'yAxis'],
+      choosers: ['xAxis', 'y0'],
       types: [],
-      xAxis: [],
-      yAxis: []
+      xAxis: '',
+      yAxis: {},
+      yCounter: 1
     };
   }
 
+  makeNewY() {
+    let copy = this.state.choosers.slice();
+    copy.push('y'+this.state.yCounter.toString());
+    this.state.yCounter++;
+    this.state.types.length = this.state.yCounter;
+    this.setState({choosers: copy});
+  }
+
   assignType(e) {
+    console.log('Assign Type:')
     const type = e.target.value;
     let copy = this.state.types.slice();
     let index = this.state.choosers.indexOf(e.target.dataset.axis) - 1
     copy[index] = type;
+    console.log(copy);
     this.setState({types: copy});
   }
 
   setAxes(e) {
     if (e.target.value !== "---choose-a-value---") {
-      let axis = {};
-      axis[e.target.dataset.axis] = e.target.value;
+      let axis;
+      if (e.target.dataset.axis === 'xAxis') {
+        axis = {}
+        axis[e.target.dataset.axis] = e.target.value;
+      } else {
+        axis = {yAxis: this.state.yAxis}
+        axis.yAxis[e.target.dataset.axis] = e.target.value;
+      }
       this.setState(axis);
     }
   }
@@ -86,6 +103,9 @@ class App extends React.Component {
         <div>
           <Input input={this.state.input} context={this} />
         </div>
+
+        <button onClick={this.makeNewY.bind(this)}>Add more series</button>
+
         <Data rawData={this.formatter(this.state.input)} setAxes={this.setAxes.bind(this)} choosers={this.state.choosers}/>
         {this.state.choosers.map(chart => chart !== 'xAxis' ?
           <Choose chartType={chart} assignType={this.assignType.bind(this)} /> : false

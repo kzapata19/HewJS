@@ -9,6 +9,9 @@ const Choose = (props) => {
   return (
     <div>
       <select data-axis={props.chartType} onChange={props.assignType}>
+        <option value="null">
+          choose a chart type
+        </option>
         <option value="bar">
           Bar
         </option>
