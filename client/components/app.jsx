@@ -108,6 +108,12 @@ class App extends React.Component {
           <Choose chartType={chart} assignType={this.assignType.bind(this)} /> : false
         )}
         {this.state.input ? <Chart app={this.state} /> : false}
+        <div>
+          <Team />
+        </div>
+        <div>
+          <Footer />
+        </div>
       </div>
     );
   }
