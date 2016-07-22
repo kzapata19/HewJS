@@ -34,8 +34,11 @@ class App extends React.Component {
     console.log('Assign Type:')
     const type = e.target.value;
     let copy = this.state.types.slice();
+    console.log('BEFORE');
+    console.log(copy);
     let index = this.state.choosers.indexOf(e.target.dataset.axis) - 1
     copy[index] = type;
+    console.log('AFTER');
     console.log(copy);
     this.setState({types: copy});
   }

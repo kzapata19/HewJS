@@ -9,8 +9,8 @@ const Choose = (props) => {
   return (
     <div>
       <select data-axis={props.chartType} onChange={props.assignType}>
-        <option value="null">
-          choose a chart type
+        <option value="scatter">
+          Scatter
         </option>
         <option value="bar">
           Bar
@@ -20,9 +20,6 @@ const Choose = (props) => {
         </option>
         <option value="line">
           Line
-        </option>
-        <option value="scatter">
-          Scatter
         </option>
       </select>
     </div>
