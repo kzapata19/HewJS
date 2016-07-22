@@ -46,10 +46,10 @@ class Chart extends React.Component {
     let copy = nextProps.app.choosers.slice(1);
     console.log(copy);
     for (let series of copy) {
-      let temp = {};
-      temp.y = nextProps.app.yAxis[series];
-      temp.type = nextProps.app.types[nextProps.app.choosers.indexOf(series)-1]
-      result.push(temp);
+      result.push({
+        y: nextProps.app.yAxis[series],
+        type: nextProps.app.types[series]
+      });
     }
     return result;
   }
