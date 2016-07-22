@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <title>"Hello HewJS! Hear me roar!"</title>
   <link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.min.css">
+  <script src="lib/jquery/dist/jquery.min.js"></script>
+  <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Bungee+Outline' rel='stylesheet' type='text/css'>
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
   <link rel="stylesheet" media="screen" href="assets/style.min.css">
@@ -12,11 +14,31 @@
 
 <div class="app"></div>
 
+<!-- html for login modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog text-center">
+    <div class="loginmodal-container">
+      <h1>Welcome to HewJS Fool</h1><br></br>
+      <div>
+        <form>
+          <input type="text" name="user" placeholder="Username"></input>
+          <input type="password" name="pass" placeholder="Password"></input><br><br>
+          <input type="submit" name="login" class="login loginmodal-submit btn btn-primary btn-danger" value="Login"></input>
+        </form>
+      </div>
+
+      <div class="login-help">
+      <br><a href="#">Register</a> - <a href="#">Forgot Password</a>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- scripts -->
 <script src="compiled/components/app.js"></script>
-<script src="lib/jquery/dist/jquery.min.js"></script>
 <script src="lib/particles.js/particles.min.js"></script>
 <script src="assets/style.js"></script>
-
 </body>
 </html>
+
+
+

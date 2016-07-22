@@ -155,3 +155,38 @@ canvas{
   margin-top: 40px;
   color: white;
 }
+
+.modalStyle {
+  display: none;
+}
+
+.modal-dialog {
+  font-size: 29px;
+  background-color: white;
+  padding: 50px 50px 50px 50px;
+  border-radius: 11px;
+}
+
+.login-help {
+  font-size: 19px;
+}
+
+form {
+  font-size: 95%;
+}
+
+.loginmodal-submit {
+  width: 64%;
+  font-size: 17px;
+  border-radius: 0px;
+}
+
+form input {
+  width: 64%;
+  font-size: 23px;
+}
+
+/*removes outline of login button*/
+.nav li a:focus {
+  outline: none;
+}
