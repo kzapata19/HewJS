@@ -1,20 +1,7 @@
 import React from 'react';
 
 // This component allows users to associate data with chart axes.
-// It formats and passes on data along with the chosen options to
-// the Chart component.
-
-// Chart's required format
-// {
-//   dataset: [{ "key": value, "key2": value}],
-//   x: "",
-//   charts: [
-//     {
-//       y: "key",
-//       type: "type"
-//     }
-//   ]
-// }
+// The association is stored as a state on the App component.
 
 const Data = (props) => {
 
