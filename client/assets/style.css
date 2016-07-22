@@ -185,3 +185,8 @@ form input {
   width: 64%;
   font-size: 23px;
 }
+
+/*removes outline of login button*/
+.nav li a:focus {
+  outline: none;
+}
