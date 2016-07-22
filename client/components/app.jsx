@@ -1,3 +1,6 @@
+import Team from './team.jsx'
+import Footer from './footer.jsx'
+import Jumbotron from './jumbotron.jsx';
 import Choose from './choose.jsx';
 import Chart from './chart.jsx';
 import Input from './input.jsx';
@@ -92,7 +95,7 @@ class App extends React.Component {
     return (
       <div>
         <div>
-          <h1>{JSON.stringify(this.state)}</h1>
+          <Jumbotron />
         </div>
         <div>
           <Input input={this.state.input} context={this} />
@@ -105,6 +108,12 @@ class App extends React.Component {
           <Choose chartType={chart} assignType={this.assignType.bind(this)} /> : false
         )}
         {this.state.input ? <Chart app={this.state} /> : false}
+        <div>
+          <Team />
+        </div>
+        <div>
+          <Footer />
+        </div>
       </div>
     );
   }
