@@ -15,7 +15,7 @@ class App extends React.Component {
       message: 'HewJS in React',
       input: '',
       choosers: ['xAxis', 'y0'],
-      types: [],
+      types: {},
       xAxis: '',
       yAxis: {},
       yCounter: 1
@@ -23,24 +23,15 @@ class App extends React.Component {
   }
 
   makeNewY() {
-    let copy = this.state.choosers.slice();
-    copy.push('y'+this.state.yCounter.toString());
-    this.state.yCounter++;
-    this.state.types.length = this.state.yCounter;
-    this.setState({choosers: copy});
+    this.setState({
+      yCounter: this.state.yCounter+1,
+      choosers: this.state.choosers.concat('y'+this.state.yCounter.toString())
+    });
   }
 
   assignType(e) {
-    console.log('Assign Type:')
-    const type = e.target.value;
-    let copy = this.state.types.slice();
-    console.log('BEFORE');
-    console.log(copy);
-    let index = this.state.choosers.indexOf(e.target.dataset.axis) - 1
-    copy[index] = type;
-    console.log('AFTER');
-    console.log(copy);
-    this.setState({types: copy});
+    this.state.types[e.target.dataset.axis] = e.target.value;
+    this.setState({types: this.state.types});
   }
 
   setAxes(e) {
