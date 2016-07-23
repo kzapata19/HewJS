@@ -25,7 +25,7 @@ const Team = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 module.exports = Team;

@@ -97,6 +97,6 @@ class Chart extends React.Component {
       </div>
     );
   }
-};
+}
 
 module.exports = Chart;

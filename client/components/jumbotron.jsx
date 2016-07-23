@@ -17,7 +17,7 @@ const Jumbotron = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 module.exports = Jumbotron;

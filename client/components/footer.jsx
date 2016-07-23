@@ -15,7 +15,7 @@ const Footer = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 module.exports = Footer;

@@ -16,9 +16,9 @@ const Input = (props) => {
         .filter(line => !!line)
         .map(line => line.split(',').map(element => element.trim()))
       });
-    }
+    };
     read.readAsText(file);
-  }
+  };
 
   const handleText = () => {
     let input = $('#textArea').val();
@@ -67,17 +67,17 @@ const Input = (props) => {
       $('#textArea').val(input);
       handleText();
     }
-  }
+  };
 
   let textAreaStyle = {
     width: '1170px',
     height: '300px',
     borderRadius: '8px'
-  }
+  };
 
   let dropzoneBorder = {
     border: 'none'
-  }
+  };
 
   return (
     <div className="dataInput text-center">
