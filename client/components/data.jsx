@@ -6,11 +6,11 @@ import React from 'react';
 const Data = (props) => {
 
   return (
-    <div>
+    <div className="allData text-center">
       <div>
       {
         props.choosers.map(axis =>
-          <div>
+          <div className="bindings">
             <h2>{axis}</h2>
             <select onChange={props.setAxes} data-axis={axis}>
               <option value="---choose-a-value---">choose a value</option>
