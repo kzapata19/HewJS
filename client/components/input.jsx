@@ -72,7 +72,7 @@ const Input = (props) => {
   let textAreaStyle = {
     width: '1170px',
     height: '300px',
-    'border-radius': '8px'
+    borderRadius: '8px'
   }
 
   let dropzoneBorder = {

@@ -92,7 +92,7 @@ class Chart extends React.Component {
   render() {
     return (
       <div>
-        <div className="chart">
+        <div className="chart text-center">
         </div>
       </div>
     );

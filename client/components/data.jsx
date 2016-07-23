@@ -10,13 +10,16 @@ const Data = (props) => {
       <div>
       {
         props.choosers.map(axis =>
-          <select onChange={props.setAxes} data-axis={axis}>
-            <option value="---choose-a-value---">choose a value</option>
-            {
-              Object.keys(props.rawData).map(key =>
-              <option value={key}>{key}</option>)
-            }
-          </select>
+          <div>
+            <h2>{axis}</h2>
+            <select onChange={props.setAxes} data-axis={axis}>
+              <option value="---choose-a-value---">choose a value</option>
+              {
+                Object.keys(props.rawData).map(key =>
+                <option value={key}>{key}</option>)
+              }
+            </select>
+          </div>
         )
       }
       </div>

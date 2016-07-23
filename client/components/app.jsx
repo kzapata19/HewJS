@@ -44,7 +44,7 @@ class App extends React.Component {
         axis = {}
         axis[e.target.dataset.axis] = e.target.value;
       } else {
-        axis = {yAxis: this.state.yAxis}
+        axis = {yAxis: this.state.yAxis, exist: true}
         axis.yAxis[e.target.dataset.axis] = e.target.value;
       }
       this.setState(axis);
@@ -81,10 +81,9 @@ class App extends React.Component {
           <Input input={this.state.input} context={this} />
         </div>
 
-        <button onClick={this.makeNewY.bind(this)}>Add more series</button>
-
-        <Data rawData={this.formatter(this.state.input)} setAxes={this.setAxes.bind(this)} choosers={this.state.choosers}/>
-        {this.state.choosers.map(chart => chart !== 'xAxis' ?
+        { this.state.input.length > 0 ? <Data rawData={this.formatter(this.state.input)} setAxes={this.setAxes.bind(this)} choosers={this.state.choosers}/> : false}
+        { this.state.exist ? <button onClick={this.makeNewY.bind(this)}>Add more series</button> : false }
+        {this.state.choosers.map(chart => chart !== 'xAxis' && this.state.exist ?
           <Choose chartType={chart} assignType={this.assignType.bind(this)} /> : false
         )}
         {this.state.input ? <Chart app={this.state} /> : false}
