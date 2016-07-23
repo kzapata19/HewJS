@@ -64,6 +64,10 @@ app.post('/signup', function(req, res) {
   .then(user => {
     if (!user) {
       routes.addUser({ username: req.body.username, password: req.body.password });
+      auth.createSession(req, res, {
+        username: req.body.username,
+        password: req.body.password
+      });
     } else {
       res.redirect('/signup');
     }
