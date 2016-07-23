@@ -2,7 +2,7 @@ import $ from 'jquery';
 
 const loadSet = function (chartName, callback){
   return $.ajax({
-    url: '/api/datasets/' + chartName,
+    url: `/api/datasets/${username}/${chartName}`
     method: 'GET'
   }).done(function(data){
     callback(null, data);
@@ -13,7 +13,7 @@ const loadSet = function (chartName, callback){
 
 const saveSet = function (username, dataSet, chartName, callback){
   return $.ajax({
-    url: '/api/datasets/' + chartName,
+    url: '/api/datasets/'
     method: 'POST',
     data: {
       'username': username,

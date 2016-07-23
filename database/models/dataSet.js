@@ -2,14 +2,14 @@
 //chart: object
 //chartName: string
 //username: string
-let mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-let dataSetSchema = mongoose.Schema({
+const dataSetSchema = mongoose.Schema({
   chart: Object,
   chartName: String,
   username: String
 });
 
-let DataSet = mongoose.model('DataSet', dataSetSchema);
+const DataSet = mongoose.model('DataSet', dataSetSchema);
 
 module.exports = DataSet;
