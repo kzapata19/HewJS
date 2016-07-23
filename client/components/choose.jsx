@@ -7,7 +7,8 @@ import React from 'react';
 const Choose = (props) => {
 
   return (
-    <div>
+    <div className="eachGraph">
+      <h2> Graph Type: </h2>
       <select data-axis={props.chartType} onChange={props.assignType}>
         <option value="scatter">
           Scatter

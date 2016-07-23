@@ -85,7 +85,7 @@ const Input = (props) => {
         <textarea id="textArea" onChange={liveText} placeholder="paste or drop your CSV here!"
         style={textAreaStyle}></textarea>
       </Dropzone>
-      <button onClick={transposeInput} className="transpose">Transpose</button>
+      <button onClick={transposeInput} className="transpose">Format data</button>
     </div>
   );
 };

@@ -82,10 +82,15 @@ class App extends React.Component {
         </div>
 
         {this.state.input.length > 0 ? <Data rawData={this.formatter(this.state.input)} setAxes={this.setAxes.bind(this)} choosers={this.state.choosers}/> : false}
-        {this.state.exist ? <button onClick={this.makeNewY.bind(this)}>Add more series</button> : false }
-        {this.state.choosers.map(chart => chart !== 'xAxis' && this.state.exist ?
-          <Choose chartType={chart} assignType={this.assignType.bind(this)} /> : false
-        )}
+        {this.state.exist ?
+          <div className="newAxis text-center">
+          <button onClick={this.makeNewY.bind(this)} className="series">Add more series</button>
+          </div> : false }
+        <div className="graphType text-center">
+          {this.state.choosers.map(chart => chart !== 'xAxis' && this.state.exist ?
+              <Choose chartType={chart} assignType={this.assignType.bind(this)} /> : false
+          )}
+        </div>
         {this.state.input ? <Chart app={this.state} /> : false}
         <div>
           <Team />
