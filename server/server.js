@@ -43,6 +43,10 @@ app.get('/api/datasets/:username/:chartName', function(req, res) {
   .catch(err => res.status(404).send(err));
 });
 
+app.get('/logout', function(req, res) {
+  auth.destroySession(req, res);
+});
+
 app.post('/api/users', function(req, res) {
   routes.addUser(req.body)
   .then(user => res.status(201).send(req.body.username))
@@ -53,6 +57,31 @@ app.post('/api/datasets', function(req, res) {
   routes.addDataSet(req.body)
   .then(dataSet => res.status(201).send(req.body.chartName))
   .catch(err => res.status(404).send(err));
+});
+
+app.post('/signup', function(req, res) {
+  routes.getUser(req.body.username)
+  .then(user => {
+    if (!user) {
+      routes.addUser({ username: req.body.username, password: req.body.password });
+    } else {
+      res.redirect('/signup');
+    }
+  });
+});
+
+app.post('/login', function(req, res) {
+  auth.checkPassword(req.body.username, req.body.password)
+  .then((user) => {
+    if (!user) {
+      res.redirect('/login');
+    } else {
+      auth.createSession(req, res, {
+        username: req.body.username,
+        password: req.body.password
+      });
+    }
+  });
 });
 
 app.put('/api/users/:username', function(req, res) {

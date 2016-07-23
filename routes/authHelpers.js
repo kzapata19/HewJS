@@ -1,3 +1,5 @@
+const User = require('../database/models/user');
+
 const isLoggedIn = function(req) {
   return req.session ? !!req.session.user : false;
 };
@@ -8,6 +10,10 @@ exports.checkUser = function(req, res, next){
   } else {
     next();
   }
+};
+
+exports.checkPassword = function(username, passwordGuess) {
+  return User.findOne({ username: username, password: passwordGuess }).exec();
 };
 
 exports.createSession = function(req, res, newUser) {
