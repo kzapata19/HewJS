@@ -69,10 +69,20 @@ const Input = (props) => {
     }
   }
 
+  let textAreaStyle = {
+    width: '1170px',
+    height: '200px'
+  }
+
+  let dropzoneBorder = {
+    border: 'none'
+  }
+
   return (
-    <div>
-      <Dropzone id="dropzone" onDrop={handleInput} disableClick={true}>
-        <textarea id="textArea" onChange={liveText} placeholder="paste or drop your CSV here!"></textarea>
+    <div className="dataInput text-center">
+      <Dropzone id="dropzone" onDrop={handleInput} disableClick={true} style={dropzoneBorder}>
+        <textarea id="textArea" onChange={liveText} placeholder="paste or drop your CSV here!"
+        style={textAreaStyle}></textarea>
       </Dropzone>
       <button onClick={transposeInput}>Transpose</button>
       <p>{JSON.stringify(props.context.state.input)}</p>

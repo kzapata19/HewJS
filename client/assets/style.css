@@ -190,3 +190,7 @@ form input {
 .nav li a:focus {
   outline: none;
 }
+
+#dropzone {
+  border: none;
+}
