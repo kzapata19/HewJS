@@ -26,6 +26,6 @@ const Data = (props) => {
     </div>
   );
 
-}
+};
 
 module.exports = Data;

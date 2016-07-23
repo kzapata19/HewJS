@@ -24,7 +24,7 @@ html{
 }
 
 * {
-  font-family: 'Open Sans';
+  font-family: 'Source Serif Pro';
 }
 
 #particles-js{
@@ -75,6 +75,7 @@ body {
   border-bottom: 2px solid transparent;
   border-bottom-color: #fff
 }
+
 canvas{
   display:block;
   vertical-align:bottom;
@@ -93,7 +94,7 @@ canvas{
 }
 
 .navbar-right li {
-  margin-left: 130px;
+  margin-left: 110px;
 }
 
 .nav li a:focus {
@@ -270,5 +271,32 @@ form input {
 select {
   background: transparent;
   background-color: black;
+  color: white;
+}
+
+.container img {
+  position: relative;
+  display: inline;
+  height: 43px;
+  top: 3px;
+  padding-right: 10px;
+}
+
+.email {
+  padding-top: 10px;
+}
+
+.email a:link {
+  text-decoration: none;
+  color: white;
+}
+
+.email a:hover {
+  border-bottom: 2px solid transparent;
+  border-bottom-color: #fff
+}
+
+.email a:visited {
+  text-decoration: none;
   color: white;
 }

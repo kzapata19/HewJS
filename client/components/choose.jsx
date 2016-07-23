@@ -25,6 +25,6 @@ const Choose = (props) => {
       </select>
     </div>
   );
-}
+};
 
 module.exports = Choose;

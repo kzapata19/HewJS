@@ -1,5 +1,5 @@
-import Team from './team.jsx'
-import Footer from './footer.jsx'
+import Team from './team.jsx';
+import Footer from './footer.jsx';
 import Jumbotron from './jumbotron.jsx';
 import Choose from './choose.jsx';
 import Chart from './chart.jsx';
@@ -41,10 +41,10 @@ class App extends React.Component {
     if (e.target.value !== "---choose-a-value---") {
       let axis;
       if (e.target.dataset.axis === 'xAxis') {
-        axis = {}
+        axis = {};
         axis[e.target.dataset.axis] = e.target.value;
       } else {
-        axis = {yAxis: this.state.yAxis, exist: true}
+        axis = {yAxis: this.state.yAxis, exist: true};
         axis.yAxis[e.target.dataset.axis] = e.target.value;
       }
       this.setState(axis);
