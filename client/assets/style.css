@@ -281,3 +281,22 @@ select {
   top: 3px;
   padding-right: 10px;
 }
+
+.email {
+  padding-top: 10px;
+}
+
+.email a:link {
+  text-decoration: none;
+  color: white;
+}
+
+.email a:hover {
+  border-bottom: 2px solid transparent;
+  border-bottom-color: #fff
+}
+
+.email a:visited {
+  text-decoration: none;
+  color: white;
+}
