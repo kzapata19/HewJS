@@ -75,7 +75,7 @@ class Chart extends React.Component {
   componentWillReceiveProps(nextProps) {
     let data = this.formatPropForChart(nextProps);
     deleteCharts();
-    makeCharts(data, 800, 600);
+    makeCharts(data, 1500, 900);
   }
 
   // componentDidMount() {

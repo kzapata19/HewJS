@@ -73,11 +73,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="react-root">
         <div>
           <Jumbotron />
         </div>
-        <div>
+        <div className="inputParent">
           <Input input={this.state.input} context={this} />
         </div>
 

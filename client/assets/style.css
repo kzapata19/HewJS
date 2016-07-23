@@ -28,6 +28,8 @@ html{
 }
 
 #particles-js{
+  z-index: -1;
+  position: absolute;
   width: 100%;
   height: 100%;
   background-color: #222222;
@@ -40,7 +42,20 @@ body {
   background: transparent;
 }
 
+.app {
+  height: 100%;
+}
+
+.react-root {
+  height: 100%;
+}
+
+.inputParent {
+  height: 100%;
+}
+
 .container {
+  position: relative;
   color: white;
   background-color: transparent;
 }
@@ -193,4 +208,24 @@ form input {
 
 #dropzone {
   border: none;
+}
+
+.dataInput {
+  position:relative;
+  top: 45%;
+}
+
+.transpose {
+  border-radius: 3px;
+  width: 61%;
+  background-color: black;
+  color: white;
+  border: none;
+  height: 35px;
+  transition: background-color 0.5s ease-out;
+}
+
+.transpose:hover {
+  background-color: white;
+  color: black;
 }
