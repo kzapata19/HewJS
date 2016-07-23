@@ -13,10 +13,8 @@ const Input = (props) => {
       context.setState({
         input: event.target.result
         .split('\n')
-        .map(line => line
-          .split(',')
-          .map(element => element.trim())
-        )
+        .filter(line => !!line)
+        .map(line => line.split(',').map(element => element.trim()))
       });
     }
     read.readAsText(file);
@@ -25,7 +23,10 @@ const Input = (props) => {
   const handleText = () => {
     let input = $('#textArea').val();
     if (input) {
-      input = input.split('\n').map(line => line.split(',').map(element => element.trim()));
+      input = input
+        .split('\n')
+        .filter(line => !!line)
+        .map(line => line.split(',').map(element => element.trim()));
       props.context.setState({
         input: input
       });
@@ -39,11 +40,41 @@ const Input = (props) => {
     }, 500);
   }
 
+  /*
+    formats data into the required format:
+    [[set1, ... data points ...],
+     [set2, ... data points ...],
+     ...
+    ]
+  */
+  const transpose = (matrix) => {
+    let result = [];
+    for (let i = 0; i < matrix[0].length; i++) {
+      let row = [];
+      for (let j = 0; j < matrix.length; j++) {
+        row.push(matrix[j][i])
+      }
+      result.push(row);
+    }
+    return result;
+  }
+
+  const transposeInput = () => {
+    let input = $('#textArea').val();
+    if (input) {
+      input = input.split('\n').filter(line => !!line).map(line => line.split(',').map(element => element.trim()));
+      input = transpose(input).map(row => row.join(',')).join('\n');
+      $('#textArea').val(input);
+      handleText();
+    }
+  }
+
   return (
     <div>
       <Dropzone id="dropzone" onDrop={handleInput} disableClick={true}>
         <textarea id="textArea" onChange={liveText} placeholder="paste or drop your CSV here!"></textarea>
       </Dropzone>
+      <button onClick={transposeInput}>Transpose</button>
       <p>{JSON.stringify(props.context.state.input)}</p>
     </div>
   );
