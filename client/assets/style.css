@@ -42,14 +42,6 @@ body {
   background: transparent;
 }
 
-img {
-  position: absolute;
-  z-index: 5;
-  height: 60px;
-  top: 32px;
-  left: 40px;
-}
-
 .app {
   height: 100%;
 }
@@ -83,6 +75,7 @@ img {
   border-bottom: 2px solid transparent;
   border-bottom-color: #fff
 }
+
 canvas{
   display:block;
   vertical-align:bottom;
@@ -101,7 +94,7 @@ canvas{
 }
 
 .navbar-right li {
-  margin-left: 130px;
+  margin-left: 110px;
 }
 
 .nav li a:focus {
@@ -279,4 +272,12 @@ select {
   background: transparent;
   background-color: black;
   color: white;
+}
+
+.container img {
+  position: relative;
+  display: inline;
+  height: 43px;
+  top: 3px;
+  padding-right: 10px;
 }
