@@ -15,8 +15,11 @@ exports.getUser = function(username) {
   return User.findOne({'username': username}, {'_id': 0, 'username': 1, 'password': 1}).exec();
 };
 
-exports.getDataSet = function(chartName) {
-  return DataSet.findOne({'chartName': chartName}, {'_id': 0, 'chart': 1, 'chartName': 1, 'username': 1}).exec();
+exports.getDataSet = function(username, chartName) {
+  return DataSet.findOne({
+    'username': username,
+    'chartName': chartName
+  }, {'_id': 0, 'chart': 1, 'chartName': 1, 'username': 1}).exec();
 };
 
 exports.addUser = function(user) {
@@ -31,14 +34,14 @@ exports.updateUser = function(username, newProperties) {
   return User.findOneAndUpdate({'username': username}, newProperties).exec();
 };
 
-exports.updateDataSet = function(chartName, newProperties) {
-  return DataSet.findOneAndUpdate({'chartName': chartName}, newProperties).exec();
+exports.updateDataSet = function(username, chartName, newProperties) {
+  return DataSet.findOneAndUpdate({'username': username, 'chartName': chartName}, newProperties).exec();
 };
 
 exports.deleteUser = function(username) {
   return User.remove({'username': username}).exec().then(() => username);
 };
 
-exports.deleteDataSet = function(chartName, callback) {
-  return DataSet.remove({'chartName': chartName}).exec().then(() => chartName);
+exports.deleteDataSet = function(username, chartName) {
+  return DataSet.remove({'username': username, 'chartName': chartName}).exec().then(() => chartName);
 };

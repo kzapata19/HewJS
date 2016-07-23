@@ -37,8 +37,8 @@ app.get('/api/users/:username', function(req, res) {
   .catch(err => res.status(404).send(err));
 });
 
-app.get('/api/datasets/:chartName', function(req, res) {
-  routes.getDataSet(req.params.chartName)
+app.get('/api/datasets/:username/:chartName', function(req, res) {
+  routes.getDataSet(req.params.username, req.params.chartName)
   .then(dataSet => res.status(200).send(dataSet))
   .catch(err => res.status(404).send(err));
 });
@@ -64,8 +64,9 @@ app.put('/api/users/:username', function(req, res) {
   .catch(err => res.status(404).send(err));
 });
 
-app.put('/api/datasets/:chartName', function(req, res) {
+app.put('/api/datasets/:username/:chartName', function(req, res) {
   routes.updateDataSet(
+    req.params.username,
     req.params.chartName,
     { chart: req.body.char, chartName: req.body.chartName, username: req.body.username }
   )
@@ -79,8 +80,8 @@ app.delete('/api/users/:username', function(req, res) {
   .catch(err => res.status(404).send(err));
 });
 
-app.delete('/api/datasets/:chartName', function(req, res) {
-  routes.deleteDataSet(req.params.chartName)
+app.delete('/api/datasets/:username/:chartName', function(req, res) {
+  routes.deleteDataSet(req.params.username, req.params.chartName)
   .then(dataSet => res.status(200).send(dataSet))
   .catch(err => res.status(404).send(err));
 });
