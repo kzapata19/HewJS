@@ -12,111 +12,69 @@ app.use(bodyParser.json());
 app.use(serveStatic(__dirname + '/../client'));
 
 app.get('/api/users', function(req, res) {
-  helpers.getAllUsers(function(err, users) {
-    if (err) {
-      res.status(404).send(err);
-    } else {
-      res.status(200).send(users);
-    }
-  });
+  helpers.getAllUsers()
+  .then(users => res.status(200).send(users))
+  .catch(err => res.status(404).send(err));
 });
 
 app.get('/api/datasets', function(req, res) {
-  helpers.getAllDataSets(function(err, dataSets) {
-    if (err) {
-      res.status(404).send(err);
-    } else {
-      res.status(200).send(dataSets);
-    }
-  });
+  helpers.getAllDataSets()
+  .then(dataSets => res.status(200).send(dataSets))
+  .catch(err => res.status(404).send(err));
 });
 
 app.get('/api/users/:username', function(req, res) {
-  helpers.getUser(req.params.username, function(err, user) {
-    if (err) {
-      res.status(404).send(err);
-    } else {
-      res.status(200).send(user);
-    }
-  });
+  helpers.getUser(req.params.username)
+  .then(user => res.status(200).send(user))
+  .catch(err => res.status(404).send(err));
 });
 
 app.get('/api/datasets/:chartName', function(req, res) {
-  helpers.getDataSet(req.params.chartName, function(err, dataSet) {
-    if (err) {
-      res.status(404).send(err);
-    } else {
-      res.status(200).send(dataSet);
-    }
-  });
+  helpers.getDataSet(req.params.chartName)
+  .then(dataSet => res.status(200).send(dataSet))
+  .catch(err => res.status(404).send(err));
 });
 
 app.post('/api/users', function(req, res) {
-  helpers.addUser(req.body, function(err, result) {
-    if (err) {
-      res.status(404).send(err);
-    } else {
-      res.status(201).send(req.body.username);
-    }
-  });
+  helpers.addUser(req.body)
+  .then(user => res.status(201).send(req.body.username))
+  .catch(err => res.status(404).send(err));
 });
 
 app.post('/api/datasets', function(req, res) {
-  helpers.addDataSet(req.body, function(err, dataSet) {
-    if (err) {
-      res.status(404).send(err);
-    } else {
-      res.status(201).send(req.body.chartName);
-    }
-  });
+  helpers.addDataSet(req.body)
+  .then(dataSet => res.status(201).send(req.body.chartName))
+  .catch(err => res.status(404).send(err));
 });
 
 app.put('/api/users/:username', function(req, res) {
   helpers.updateUser(
     req.params.username,
-    { username: req.body.username, password: req.body.password },
-    function(err, user) {
-      if (err) {
-        res.status(404).send(err);
-      } else {
-        res.status(200).send(user);
-      }
-    }
-  );
+    { username: req.body.username, password: req.body.password }
+  )
+  .then(user => res.status(200).send(user))
+  .catch(err => res.status(404).send(err));
 });
 
 app.put('/api/datasets/:chartName', function(req, res) {
   helpers.updateDataSet(
     req.params.chartName,
-    { chart: req.body.char, chartName: req.body.chartName, username: req.body.username },
-    function(err, dataSet) {
-      if (err) {
-        res.status(404).send(err);
-      } else {
-        res.status(200).send(dataSet);
-      }
-    }
-  );
+    { chart: req.body.char, chartName: req.body.chartName, username: req.body.username }
+  )
+  .then(dataSet => res.status(200).send(dataSet))
+  .catch(err =>res.status(404).send(err));
 });
 
 app.delete('/api/users/:username', function(req, res) {
-  helpers.deleteUser(req.params.username, function(err, user) {
-    if (err) {
-      res.status(404).send(err);
-    } else {
-      res.status(200).send(user);
-    }
-  });
+  helpers.deleteUser(req.params.username)
+  .then(user => res.status(200).send(user))
+  .catch(err => res.status(404).send(err));
 });
 
 app.delete('/api/datasets/:chartName', function(req, res) {
-  helpers.deleteChart(req.params.chartName, function(err, dataSet) {
-    if (err) {
-      res.status(404).send(err);
-    } else {
-      res.status(200).send(dataSet);
-    }
-  });
+  helpers.deleteDataSet(req.params.chartName)
+  .then(dataSet => res.status(200).send(dataSet))
+  .catch(err => res.status(404).send(err));
 });
 
 module.exports = app;

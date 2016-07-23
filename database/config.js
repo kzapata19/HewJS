@@ -1,8 +1,10 @@
-let mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/hewJSdb');
+mongoose.Promise = require('bluebird');
+const options = { promiseLibrary: require('bluebird') };
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/hewJSdb', options);
 
-let db = mongoose.connection;
+const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
  console.log('Mongodb connection open');
