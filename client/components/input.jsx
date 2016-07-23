@@ -68,11 +68,17 @@ const Input = (props) => {
     return result;
   };
 
+  const printCSV = (matrix) => {
+    return matrix.map(row => row.map(entry =>
+      entry.indexOf(',') === -1 ? entry : '"'+entry+'"')
+      .join(',')
+    ).join('\n');
+  };
+
   const transposeInput = () => {
     let input = $('#textArea').val();
     if (input) {
-      input = parseCSV(input);
-      input = transpose(input).map(row => row.join(',')).join('\n');
+      input = printCSV(parseCSV(input));
       $('#textArea').val(input);
       handleText();
     }
