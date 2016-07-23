@@ -42,6 +42,14 @@ body {
   background: transparent;
 }
 
+img {
+  position: absolute;
+  z-index: 5;
+  height: 60px;
+  top: 32px;
+  left: 40px;
+}
+
 .app {
   height: 100%;
 }
