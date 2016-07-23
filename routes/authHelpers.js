@@ -6,7 +6,7 @@ const isLoggedIn = function(req) {
 
 exports.checkUser = function(req, res, next){
   if (!isLoggedIn(req)) {
-    res.redirect('/login');
+    res.redirect('/');
   } else {
     next();
   }
@@ -25,6 +25,6 @@ exports.createSession = function(req, res, newUser) {
 
 exports.destroySession = function(req, res) {
   req.session.destroy(function(){
-    res.redirect('/login');
+    res.redirect('/');
   });
 };
