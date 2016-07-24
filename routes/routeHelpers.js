@@ -4,7 +4,7 @@ const User = require('../database/models/user');
 const DataSet = require('../database/models/dataSet');
 
 exports.getAllUsers = function() {
-  return User.find({}, {'_id': 0, 'username': 1, 'password': 1}).exec();
+  return User.find({}, {'_id': 0, 'username': 1}).exec();
 };
 
 exports.getAllDataSets = function() {
@@ -12,7 +12,7 @@ exports.getAllDataSets = function() {
 };
 
 exports.getUser = function(username) {
-  return User.findOne({'username': username}, {'_id': 0, 'username': 1, 'password': 1}).exec();
+  return User.findOne({'username': username}, {'_id': 0, 'username': 1}).exec();
 };
 
 exports.getDataSet = function(username, chartName) {

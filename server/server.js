@@ -47,7 +47,7 @@ app.get('/logout', function(req, res) {
   auth.destroySession(req, res);
 });
 
-app.post('/api/users', function(req, res) {
+app.post('/api/users', auth.checkUser, function(req, res) {
   routes.addUser(req.body)
   .then(user => res.status(201).send(req.body.username))
   .catch(err => res.status(404).send(err));
