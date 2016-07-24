@@ -1,10 +1,13 @@
+const Promise = require('bluebird');
+const cipher = Promise.promisify(require('bcrypt-nodejs').hash);
+
 const db = require('../database/config');
 
 const User = require('../database/models/user');
 const DataSet = require('../database/models/dataSet');
 
 exports.getAllUsers = function() {
-  return User.find({}, {'_id': 0, 'username': 1, 'password': 1}).exec();
+  return User.find({}, {'_id': 0, 'username': 1}).exec();
 };
 
 exports.getAllDataSets = function() {
@@ -12,7 +15,7 @@ exports.getAllDataSets = function() {
 };
 
 exports.getUser = function(username) {
-  return User.findOne({'username': username}, {'_id': 0, 'username': 1, 'password': 1}).exec();
+  return User.findOne({'username': username}, {'_id': 0, 'username': 1}).exec();
 };
 
 exports.getDataSet = function(username, chartName) {
@@ -23,7 +26,11 @@ exports.getDataSet = function(username, chartName) {
 };
 
 exports.addUser = function(user) {
-  return User.create(user);
+  return cipher(user.password, null, null)
+  .then(hashedPassword => User.create({
+    username: user.username,
+    password: hashedPassword
+  }));
 };
 
 exports.addDataSet = function(dataSet) {

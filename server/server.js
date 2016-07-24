@@ -47,7 +47,7 @@ app.get('/logout', function(req, res) {
   auth.destroySession(req, res);
 });
 
-app.post('/api/users', function(req, res) {
+app.post('/api/users', auth.checkUser, function(req, res) {
   routes.addUser(req.body)
   .then(user => res.status(201).send(req.body.username))
   .catch(err => res.status(404).send(err));
@@ -69,16 +69,16 @@ app.post('/signup', function(req, res) {
         password: req.body.password
       });
     } else {
-      res.redirect('/');
+      res.status(401).send(`User ${req.body.username} already exists`);
     }
   });
 });
 
 app.post('/login', function(req, res) {
   auth.checkPassword(req.body.username, req.body.password)
-  .then((user) => {
-    if (!user) {
-      res.redirect('/');
+  .then(matches => {
+    if (!matches) {
+      res.status(401).send('Incorrect login provided');
     } else {
       auth.createSession(req, res, {
         username: req.body.username,

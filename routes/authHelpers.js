@@ -1,3 +1,6 @@
+const Promise = require('bluebird');
+const compareHash = Promise.promisify(require('bcrypt-nodejs').compare);
+
 const User = require('../database/models/user');
 
 const isLoggedIn = function(req) {
@@ -6,14 +9,16 @@ const isLoggedIn = function(req) {
 
 exports.checkUser = function(req, res, next){
   if (!isLoggedIn(req)) {
-    res.redirect('/');
+    res.status(401).send('You must be logged in to access this resource');
   } else {
     next();
   }
 };
 
 exports.checkPassword = function(username, passwordGuess) {
-  return User.findOne({ username: username, password: passwordGuess }).exec();
+  return User.findOne({ username: username })
+  .exec()
+  .then(user => compareHash(passwordGuess, user.password));
 };
 
 exports.createSession = function(req, res, newUser) {
