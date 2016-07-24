@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-const loadSet = function (chartName, callback){
+const loadSet = function(username, chartName, callback) {
   return $.ajax({
     url: `/api/datasets/${username}/${chartName}`
     method: 'GET'
@@ -11,7 +11,7 @@ const loadSet = function (chartName, callback){
   });
 };
 
-const saveSet = function (username, dataSet, chartName, callback){
+const saveSet = function(username, dataSet, chartName, callback) {
   return $.ajax({
     url: '/api/datasets/'
     method: 'POST',
