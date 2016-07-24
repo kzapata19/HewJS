@@ -27,10 +27,10 @@ exports.getDataSet = function(username, chartName) {
 
 exports.addUser = function(user) {
   return cipher(user.password, null, null)
-    .then(hashedPassword => User.create({
-      username: user.username,
-      password: hashedPassword
-    }));
+  .then(hashedPassword => User.create({
+    username: user.username,
+    password: hashedPassword
+  }));
 };
 
 exports.addDataSet = function(dataSet) {

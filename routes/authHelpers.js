@@ -17,8 +17,8 @@ exports.checkUser = function(req, res, next){
 
 exports.checkPassword = function(username, passwordGuess) {
   return User.findOne({ username: username })
-    .exec()
-    .then(user => compareHash(passwordGuess, user.password))
+  .exec()
+  .then(user => compareHash(passwordGuess, user.password));
 };
 
 exports.createSession = function(req, res, newUser) {
