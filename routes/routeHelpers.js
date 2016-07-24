@@ -1,3 +1,6 @@
+const Promise = require('bluebird');
+const cipher = Promise.promisify(require('bcrypt-nodejs').hash);
+
 const db = require('../database/config');
 
 const User = require('../database/models/user');
@@ -23,7 +26,11 @@ exports.getDataSet = function(username, chartName) {
 };
 
 exports.addUser = function(user) {
-  return User.create(user);
+  return cipher(user.password, null, null)
+    .then(hashedPassword => User.create({
+      username: user.username,
+      password: hashedPassword
+    }));
 };
 
 exports.addDataSet = function(dataSet) {

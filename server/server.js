@@ -76,8 +76,8 @@ app.post('/signup', function(req, res) {
 
 app.post('/login', function(req, res) {
   auth.checkPassword(req.body.username, req.body.password)
-  .then((user) => {
-    if (!user) {
+  .then(matches => {
+    if (!matches) {
       res.status(401).send('Incorrect login provided');
     } else {
       auth.createSession(req, res, {
