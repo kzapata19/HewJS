@@ -19,14 +19,14 @@ app.use(session({
   saveUninitialized: true
 }));
 
-app.get('/api/users', auth.checkUser, function(req, res) {
+app.get('/api/users', function(req, res) {
   routes.getAllUsers()
   .then(users => res.status(200).send(users))
   .catch(err => res.status(404).send(err));
 });
 
-app.get('/api/datasets', auth.checkUser, function(req, res) {
-  routes.getAllDataSets()
+app.get('/api/datasets/:username', auth.checkUser, function(req, res) {
+  routes.getAllDataSets(req.params.username)
   .then(dataSets => res.status(200).send(dataSets))
   .catch(err => res.status(404).send(err));
 });
@@ -47,13 +47,7 @@ app.get('/logout', function(req, res) {
   auth.destroySession(req, res);
 });
 
-app.post('/api/users', auth.checkUser, function(req, res) {
-  routes.addUser(req.body)
-  .then(user => res.status(201).send(req.body.username))
-  .catch(err => res.status(404).send(err));
-});
-
-app.post('/api/datasets', auth.checkUser, function(req, res) {
+app.post('/api/datasets/:username', auth.checkUser, function(req, res) {
   routes.addDataSet(req.body)
   .then(dataSet => res.status(201).send(req.body.chartName))
   .catch(err => res.status(404).send(err));
@@ -89,21 +83,14 @@ app.post('/login', function(req, res) {
 });
 
 app.put('/api/users/:username', auth.checkUser, function(req, res) {
-  routes.updateUser(
-    req.params.username,
-    { username: req.body.username, password: req.body.password }
-  )
-  .then(user => res.status(200).send(user))
+  routes.updateUser(req.params.username, req.body.password)
+  .then(user => res.status(200).send(`Changed password for ${req.params.username}`))
   .catch(err => res.status(404).send(err));
 });
 
 app.put('/api/datasets/:username/:chartName', auth.checkUser, function(req, res) {
-  routes.updateDataSet(
-    req.params.username,
-    req.params.chartName,
-    { chart: req.body.char, chartName: req.body.chartName, username: req.body.username }
-  )
-  .then(dataSet => res.status(200).send(dataSet))
+  routes.updateDataSet(req.params.username, req.params.chartName, req.body.chart)
+  .then(dataSet => res.status(200).send(`Changed data for ${req.params.username}'s chart ${req.params.chartName}`))
   .catch(err =>res.status(404).send(err));
 });
 
