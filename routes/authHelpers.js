@@ -6,7 +6,7 @@ const isLoggedIn = function(req) {
 
 exports.checkUser = function(req, res, next){
   if (!isLoggedIn(req)) {
-    res.redirect('/');
+    res.status(401).send('You must be logged in to access this resource');
   } else {
     next();
   }
