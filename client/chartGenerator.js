@@ -16,20 +16,35 @@ let makeCharts = function(data, height, width) {
     // add the category axis and measure axis...
     // add the series
     // draw
-  data.charts.forEach((chart) => {
+
+  // OLD VERSION
+  // data.charts.forEach((chart) => {
+  //   chart.type ? chart.type : "scatter";
+  //   if (chart.y) {
+  //     let newChart = new dimple.chart(svg, data.dataset);
+  //     let newChartType = typify(chart.type);
+
+  //     newChart.addCategoryAxis('x', data.x);
+  //     newChart.addMeasureAxis('y', chart.y);
+
+  //     newChart.addSeries(null, newChartType);
+
+  //     newChart.draw();
+  //   }
+  // });
+
+  let newChart = new dimple.chart(svg, data.dataset);
+  let x = newChart.addCategoryAxis('x', data.x);
+  x.addOrderRule(data.x);
+  data.charts.forEach(chart => {
     chart.type ? chart.type : "scatter";
     if (chart.y) {
-      let newChart = new dimple.chart(svg, data.dataset);
       let newChartType = typify(chart.type);
-
-      newChart.addCategoryAxis('x', data.x);
-      newChart.addMeasureAxis('y', chart.y);
-
-      newChart.addSeries(null, newChartType);
-
-      newChart.draw();
+      let y = newChart.addMeasureAxis('y', chart.y);
+      newChart.addSeries(null, newChartType, [x, y]);
     }
   });
+  newChart.draw();
 };
 
 let deleteCharts = function() {
