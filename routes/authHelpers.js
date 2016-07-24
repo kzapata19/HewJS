@@ -8,8 +8,8 @@ const isLoggedIn = function(req) {
 };
 
 exports.checkUser = function(req, res, next){
-  if (!isLoggedIn(req)) {
-    res.status(401).send('You must be logged in to access this resource');
+  if (!isLoggedIn(req) || req.params.username !== req.session.user.username) {
+    res.status(401).send(`You must be logged in as ${req.params.username} to access this resource`);
   } else {
     next();
   }
@@ -18,7 +18,7 @@ exports.checkUser = function(req, res, next){
 exports.checkPassword = function(username, passwordGuess) {
   return User.findOne({ username: username })
   .exec()
-  .then(user => compareHash(passwordGuess, user.password));
+  .then(user => user ? compareHash(passwordGuess, user.password) : false);
 };
 
 exports.createSession = function(req, res, newUser) {

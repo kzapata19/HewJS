@@ -10,8 +10,8 @@ exports.getAllUsers = function() {
   return User.find({}, {'_id': 0, 'username': 1}).exec();
 };
 
-exports.getAllDataSets = function() {
-  return DataSet.find({}, {'_id': 0, 'chart': 1, 'chartName': 1, 'username': 1}).exec();
+exports.getAllDataSets = function(username) {
+  return DataSet.find({'username': username}, {'_id': 0, 'chart': 1, 'chartName': 1, 'username': 1}).exec();
 };
 
 exports.getUser = function(username) {
@@ -37,12 +37,13 @@ exports.addDataSet = function(dataSet) {
   return DataSet.create(dataSet);
 };
 
-exports.updateUser = function(username, newProperties) {
-  return User.findOneAndUpdate({'username': username}, newProperties).exec();
+exports.updateUser = function(username, newPassword) {
+  return cipher(newPassword, null, null)
+  .then(hashedPassword => User.findOneAndUpdate({'username': username}, {'password' : hashedPassword}).exec());
 };
 
-exports.updateDataSet = function(username, chartName, newProperties) {
-  return DataSet.findOneAndUpdate({'username': username, 'chartName': chartName}, newProperties).exec();
+exports.updateDataSet = function(username, chartName, newChart) {
+  return DataSet.findOneAndUpdate({'username': username, 'chartName': chartName}, {'chart': newChart}).exec();
 };
 
 exports.deleteUser = function(username) {

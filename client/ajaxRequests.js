@@ -43,7 +43,7 @@ const logout = function(callback) {
 
 const saveDataSet = function(username, dataSet, chartName, callback) {
   return $.ajax({
-    url: '/api/datasets/',
+    url: '/api/datasets/${username}',
     method: 'POST',
     data: {
       'username': username,
