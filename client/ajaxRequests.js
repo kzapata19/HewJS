@@ -4,13 +4,14 @@ const signup = function(username, password, callback) {
   return $.ajax({
     url: '/signup',
     method: 'POST',
-    data: {
+    contentType: 'application/json',
+    data: JSON.stringify({
       'username': username,
       'password': password
-    }
+    })
   }).done(function(result){
     callback(null, result);
-  }).error(function(err){
+  }).fail(function(err){
     callback(err, null);
   });
 };
@@ -19,13 +20,14 @@ const login = function(username, password, callback) {
   return $.ajax({
     url: '/login',
     method: 'POST',
-    data: {
+    contentType: 'application/json',
+    data: JSON.stringify({
       'username': username,
       'password': password
-    }
+    })
   }).done(function(result){
     callback(null, result);
-  }).error(function(err){
+  }).fail(function(err){
     callback(err, null);
   });
 };
@@ -36,23 +38,24 @@ const logout = function(callback) {
     method: 'GET'
   }).done(function(data){
     callback(null, data);
-  }).error(function(err){
+  }).fail(function(err){
     callback(err, null);
   });
 };
 
 const saveDataSet = function(username, dataSet, chartName, callback) {
   return $.ajax({
-    url: '/api/datasets/${username}',
+    url: `/api/datasets/${username}`,
     method: 'POST',
-    data: {
+    contentType: 'application/json',
+    data: JSON.stringify({
       'username': username,
       'dataSet': dataSet,
       'chartName': chartName
-    }
+    })
   }).done(function(result) {
     callback(null, result);
-  }).error(function(err) {
+  }).fail(function(err) {
     callback(err, null);
   });
 };
@@ -60,10 +63,11 @@ const saveDataSet = function(username, dataSet, chartName, callback) {
 const loadDataSet = function(username, chartName, callback) {
   return $.ajax({
     url: `/api/datasets/${username}/${chartName}`,
-    method: 'GET'
+    method: 'GET',
+    dataType: 'json'
   }).done(function(data){
     callback(null, data);
-  }).error(function(err){
+  }).fail(function(err){
     callback(err, null);
   });
 };
