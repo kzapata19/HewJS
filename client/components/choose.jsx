@@ -1,5 +1,3 @@
-import React from 'react';
-
 // This component handles chart type selection for each data series.
 // The association is stored as an array ``types'' on the state of the App component,
 // where types[index] is associated with choosers[index+1]
