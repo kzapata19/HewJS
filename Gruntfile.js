@@ -3,7 +3,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-     watch: {
+    watch: {
       browserify: {
         files: ['client/components/*.jsx'],
         tasks: ['browserify', 'uglify']
@@ -13,7 +13,7 @@ module.exports = function(grunt) {
     browserify: {
       dist: {
         options: {
-           transform: [['babelify', {presets: ['es2015', 'react']}]]
+          transform: [['babelify', {presets: ['es2015', 'react']}]]
         },
         src: ['client/components/*.jsx'],
         dest: 'client/compiled/components/app.js',
@@ -36,7 +36,7 @@ module.exports = function(grunt) {
         files: {
           'client/compiled/components/app.min.js': 'client/compiled/components/app.js'
         }
-       }
+      }
     },
 
     shell: {

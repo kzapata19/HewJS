@@ -107,15 +107,13 @@ particlesJS('particles-js', {
     }
   },
   "retina_detect": true
-  }
-
-);
+});
 
 var $root = $('html, body');
 
 $('.team').click(function() {
-    $root.animate({
-        scrollTop: $( $.attr(this, 'href') ).offset().top
-    }, 1000);
-    return false;
+  $root.animate({
+    scrollTop: $( $.attr(this, 'href') ).offset().top
+  }, 1000);
+  return false;
 });
