@@ -4,6 +4,7 @@ const signup = function(username, password, callback) {
   return $.ajax({
     url: '/signup',
     method: 'POST',
+    contentType: 'application/json',
     data: {
       'username': username,
       'password': password
@@ -19,6 +20,7 @@ const login = function(username, password, callback) {
   return $.ajax({
     url: '/login',
     method: 'POST',
+    contentType: 'application/json',
     data: {
       'username': username,
       'password': password
@@ -33,7 +35,8 @@ const login = function(username, password, callback) {
 const logout = function(callback) {
   return $.ajax({
     url: '/logout',
-    method: 'GET'
+    method: 'GET',
+    contentType: 'application/json'
   }).done(function(data){
     callback(null, data);
   }).error(function(err){
@@ -45,6 +48,7 @@ const saveDataSet = function(username, dataSet, chartName, callback) {
   return $.ajax({
     url: '/api/datasets/${username}',
     method: 'POST',
+    contentType: 'application/json',
     data: {
       'username': username,
       'dataSet': dataSet,
@@ -60,7 +64,8 @@ const saveDataSet = function(username, dataSet, chartName, callback) {
 const loadDataSet = function(username, chartName, callback) {
   return $.ajax({
     url: `/api/datasets/${username}/${chartName}`,
-    method: 'GET'
+    method: 'GET',
+    dataType: 'application/json'
   }).done(function(data){
     callback(null, data);
   }).error(function(err){
