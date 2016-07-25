@@ -35,8 +35,7 @@ const login = function(username, password, callback) {
 const logout = function(callback) {
   return $.ajax({
     url: '/logout',
-    method: 'GET',
-    dataType: 'json'
+    method: 'GET'
   }).done(function(data){
     callback(null, data);
   }).fail(function(err){
