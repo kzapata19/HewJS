@@ -63,7 +63,7 @@ app.post('/api/datasets/:username', auth.checkUser, function(req, res) {
 });
 
 // This POST route signs up a new user object (username/password) and
-// create a new session for them
+// creates a new session for them
 app.post('/signup', function(req, res) {
   routes.getUser(req.body.username)
   .then(user => {
