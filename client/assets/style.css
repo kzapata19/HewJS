@@ -14,6 +14,7 @@ hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padd
 input,select{vertical-align:middle}
 li{list-style:none}
 
+
 html,body{
   width:100%;
   height:100%;
@@ -46,10 +47,12 @@ body {
   height: 100%;
 }
 
+/*used in order to get the text area centered */
 .react-root {
   height: 100%;
 }
 
+/*user in order to get the text area centered*/
 .inputParent {
   height: 100%;
 }
@@ -64,6 +67,8 @@ body {
 .container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse,.container>.navbar-header {
   padding-bottom: 20px;
 }
+
+/*styling of logo on left side of nav, the text HewJS*/
 .navbar-header a {
   font-family: 'Bungee Outline';
   text-decoration: none;
@@ -71,39 +76,30 @@ body {
   font-size: 40px;
 }
 
-.navbar-header a:hover {
+/*white underline when you hover over nav elements*/
+.navbar-header a:hover, .navbar-right a:hover {
   border-bottom: 2px solid transparent;
   border-bottom-color: #fff
 }
 
-canvas{
-  display:block;
-  vertical-align:bottom;
-}
-
+/*styling for nav element font*/
 .navbar-right {
   font-size: 1.4rem;
   font-weight: bold;
   color: white;
   vertical-align: middle;
 }
-.navbar-right a:hover {
-  background-color: #222;
-  border-bottom: 2px solid transparent;
-  border-bottom-color: #fff
-}
 
+/*proper spacing between li elements*/
 .navbar-right li {
   margin-left: 110px;
 }
 
-.nav li a:focus {
+/*makes background black on hover*/
+.nav li a:focus, .nav li a:hover {
   background-color: #222;
 }
 
-.nav li a:hover {
-  background-color: #222;
-}
 
 .navbar-right a{
   text-decoration: none;
@@ -111,7 +107,7 @@ canvas{
 }
 
 
-
+/*styling for left logo text*/
 .hew {
   margin-top: 120px;
   font-family: 'Bungee Outline';
@@ -119,6 +115,7 @@ canvas{
   background-color: transparent;
 }
 
+/*styling for the team section to make it a little response*/
 .row {
   width: 75%;
   max-width: 100%;
@@ -156,23 +153,7 @@ canvas{
   margin-bottom: 20px;
 }
 
-.footer {
-  height: 150px;
-  background-color: #222;
-}
-
-.footer-info {
-  margin-top: 40px;
-  font-size: 40px;
-  font-family: 'Bungee Outline';
-  color: white;
-}
-
-.footer-links {
-  margin-top: 40px;
-  color: white;
-}
-
+/*used so that the modal does not show up until called upon*/
 .modalStyle {
   display: none;
 }
@@ -208,6 +189,7 @@ form input {
   outline: none;
 }
 
+/*removes default dropzone border*/
 #dropzone {
   border: none;
 }
@@ -217,6 +199,7 @@ form input {
   top: 45%;
 }
 
+/*format data button styling*/
 .transpose {
   border-radius: 3px;
   width: 61%;
@@ -224,14 +207,9 @@ form input {
   color: white;
   border: none;
   height: 35px;
-  transition: background-color 0.5s ease-out;
 }
 
-.transpose:hover,  {
-  background-color: white;
-  color: black;
-}
-
+/*add series button*/
 .series {
   width: 100%;
   height: 35px;
@@ -240,7 +218,7 @@ form input {
   background-color: black;
   transition: background-color 0.5s ease-out;
 }
-
+/*add series */
 .series:hover {
   background-color: white;
   color: black;
@@ -253,6 +231,7 @@ form input {
   background-color: #d3d3d3;
 }
 
+/*actual chart styling to make it white instead of the background color of .chart*/
 .chartSvg {
   background-color: white;
 }
@@ -274,6 +253,7 @@ select {
   color: white;
 }
 
+/*styling of logo*/
 .container img {
   position: relative;
   display: inline;
@@ -298,5 +278,22 @@ select {
 
 .email a:visited {
   text-decoration: none;
+  color: white;
+}
+
+.footer {
+  height: 150px;
+  background-color: #222;
+}
+
+.footer-info {
+  margin-top: 40px;
+  font-size: 40px;
+  font-family: 'Bungee Outline';
+  color: white;
+}
+
+.footer-links {
+  margin-top: 40px;
   color: white;
 }
